@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProjectController;
+use App\Models\Project;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +56,26 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('/', function () {
+		return view('dashboard');
+	});
+
+	Route::get('projects', function (Project $project) {
+		return view('project.index', ['data'=>ProjectController::show($project) ]);
+	})->name('project');
+	
+	Route::get('register/project', function () {
+		return view('project.register');
+	})->name('registerProject');
+
+	Route::get('register/success', function () {
+		return view('project.success');
+	})->name('success');
+
+	Route::post('project', ['as' => 'project.create', 'uses' => 'App\Http\Controllers\ProjectController@create'], function () {
+		return view('project.index');
+	});
+
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
