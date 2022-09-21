@@ -9,7 +9,7 @@
               <p class="card-title"><strong>{{ __('Projeto cadastrado com sucesso') }}</strong></p>
             </div>
             <div class="card-body text-center">
-            <a href="{{ route('project') }}""><button type="button" class="btn btn-secondary">Voltar para tela de projeto</button></a>
+            <a href="{{ route('project') }}""><button type="button" class="btn btn-secondary">Voltar para lista de projeto</button></a>
             </div>
           </div>
       </div>

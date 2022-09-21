@@ -16,7 +16,7 @@ class Project extends Model
     protected $fillable = [
         'name',
         'responsible',
-        // 'calculated',
-        // 'method'
+        'calculated',
+        'method'
     ];
 }

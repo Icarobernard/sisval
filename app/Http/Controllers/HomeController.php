@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Project;
 
 class HomeController extends Controller
 {
@@ -19,8 +20,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public static function index()
     {
-        return view('dashboard');
+        $projects = Project::all();
+        return view('dashboard', ['projects'=> count($projects)]);
     }
 }

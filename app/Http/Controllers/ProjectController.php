@@ -14,9 +14,9 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
     }
 
     /**
@@ -26,13 +26,46 @@ class ProjectController extends Controller
      */
     public function create(Request $request)
     {
-        $name = $request->input('name');
-        $responsible = $request->input('responsible');
-        Project::create([
-            'name' =>  $name,
-            'responsible' => $responsible,
-        ]);
-        return view('project.success');
+        $dataValues = [
+            'name' =>  $request->input('name'),
+            'responsible' =>  $request->input('responsible'),
+            'method' => $request->input('method'),
+            'calculated' => $request->input('calculated'),
+        ];
+        $values = [];
+
+    if($request->input('method') == 'Fluxo de caixa descontado') {
+        $tax = $request->input('tax');
+        $period = $request->input('period');
+        if($tax && $period) {
+            foreach ($request->input('data') as $key => $value) {
+                array_push($values,$value);
+           }
+
+            if($request->input('data')) {
+     
+                // for($i=1; $i <= $request->input('period'); $i++ ) {
+                //    $dataValues['calculated'] = $dataValues['calculated'] + $request->input('value')/ pow($tax,$i);
+                // }
+                // Project::create($dataValues);
+                // return view('project.message.success');
+            } else {
+                return view('project.methods.fcd', ['data' => $dataValues]);
+            }
+           
+        }
+        return view('project.methods.fcd', ['data' => $dataValues]);
+    } else {
+        return view('project.message.fail');
+    }
+    // return view('project.index');
+    // else if ($request->input('end')) {               
+    //     Project::create($dataValues);
+    //     return view('project.message.success');
+    // }
+    // else {
+    //     return view('project.index');
+    // }
     }
 
     /**
@@ -41,9 +74,10 @@ class ProjectController extends Controller
      * @param  \App\Http\Requests\StoreProjectRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProjectRequest $request)
+    public function update(StoreProjectRequest $request)
     {
-        //
+        auth()->user()->update($request->all());
+        return back()->withStatus(__('Project successfully updated.'));
     }
 
     /**
@@ -76,10 +110,6 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProjectRequest $request, Project $project)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

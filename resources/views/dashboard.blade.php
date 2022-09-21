@@ -11,14 +11,14 @@
                 <i class="material-icons">content_copy</i>
               </div>
               <p class="card-category">Projetos cadastrados</p>
-              <h3 class="card-title">49
+              <h3 class="card-title">{{$projects}}
                 <!-- <small>GB</small> -->
               </h3>
             </div>
             <div class="card-footer">
               <div class="stats">
-                <i class="material-icons text-danger">warning</i>
-                <a href="#pablo">Get More Space...</a>
+                <i class="material-icons text-success">people</i>
+                <a href="{{ route('project') }}">Ver projetos</a>
               </div>
             </div>
           </div>

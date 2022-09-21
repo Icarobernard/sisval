@@ -56,10 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/', function () {
-		return view('dashboard');
-	});
-
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
 	Route::get('projects', function (Project $project) {
 		return view('project.index', ['data'=>ProjectController::show($project) ]);
 	})->name('project');
@@ -75,6 +72,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('project', ['as' => 'project.create', 'uses' => 'App\Http\Controllers\ProjectController@create'], function () {
 		return view('project.index');
 	});
+	Route::put('project', ['as' => 'project.update', 'uses' => 'App\Http\Controllers\ProjectController@update']);
 
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);

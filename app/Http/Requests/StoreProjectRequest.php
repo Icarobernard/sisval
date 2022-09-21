@@ -26,6 +26,8 @@ class StoreProjectRequest extends FormRequest
         return [
             'name' => ['required', 'min:3'],
             'responsible' => ['required', 'min:3'],
+            'mathod' => ['required', 'min:3'],
+            'calculated' => ['required', 'min:3'],
         ];
     }
 }

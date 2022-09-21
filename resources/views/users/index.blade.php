@@ -41,7 +41,7 @@
     <meta property="og:description" content="Material Dashboard Laravel is a Free Material Bootstrap Admin Preset for Laravel with a fresh, new design inspired by Google's Material Design." />
     <meta property="og:site_name" content="Creative Tim" />
     
-    <title>{{ __('Material Dashboard Laravel - Free Frontend Preset for Laravel') }}</title>
+    <title>{{ __('Sisval') }}</title>
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('material') }}/img/apple-icon.png">
     <link rel="icon" type="image/png" href="{{ asset('material') }}/img/favicon.png">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -287,7 +287,7 @@
     </div>
   </div>
 </div>
-  <footer class="footer">
+  <!-- <footer class="footer">
 <div class="container-fluid">
   <nav class="float-left">
     <ul>
@@ -318,10 +318,10 @@
     <script>
       document.write(new Date().getFullYear())
     </script>, made with <i class="material-icons">favorite</i> by
-    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> and <a href="https://www.updivision.com" target="_blank">UPDIVISION</a> for a better web.
+    <a href="https://www.creative-tim.com" target="_blank">Icaro Bernard</a> and Maurício Ladeira.
   </div>
 </div>
-</footer>
+</footer> -->
 </div>
 </div>
                       

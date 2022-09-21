@@ -29,7 +29,7 @@
                 </div>
               @endif
             </div>
-            <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }} mt-3">
+            <div class="bmd-form-group{{ $errors->has('responsible') ? ' has-danger' : '' }} mt-3">
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
@@ -39,6 +39,31 @@
                 <input type="text" name="responsible" class="form-control" placeholder="{{ __('Responsáveis do projeto...') }}" value="{{ old('responsible') }}" required>
               </div>
             </div>
+            <div class="bmd-form-group mt-3">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                  </span>
+                </div>
+                <div class="form-check form-check-radio form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="method" id="inlineRadio1" value="Fluxo de caixa descontado"> Fluxo de caixa descontado (FCD)
+                  <span class="circle">
+                      <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-check form-check-radio form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="method" id="inlineRadio2" value="Royalty Rates"> Royalty Rates
+                  <span class="circle">
+                      <span class="check"></span>
+                  </span>
+                </label>
+              </div>
+              </div>
+            </div>
+            <input type="hidden" name="calculated" class="form-control" placeholder="{{ __('Responsáveis do projeto...') }}" value="0" required>
           </div>
           <div class="card-footer justify-content-center">
             <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Criar projeto') }}</button>
