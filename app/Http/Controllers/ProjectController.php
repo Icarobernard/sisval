@@ -6,7 +6,6 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Http\Request;
-
 class ProjectController extends Controller
 {
     /**
@@ -38,21 +37,11 @@ class ProjectController extends Controller
         $tax = $request->input('tax');
         $period = $request->input('period');
         if($tax && $period) {
-            foreach ($request->input('data') as $key => $value) {
-                array_push($values,$value);
-           }
-
-            if($request->input('data')) {
-     
+                // var_dump($values);
                 // for($i=1; $i <= $request->input('period'); $i++ ) {
                 //    $dataValues['calculated'] = $dataValues['calculated'] + $request->input('value')/ pow($tax,$i);
-                // }
-                // Project::create($dataValues);
-                // return view('project.message.success');
-            } else {
-                return view('project.methods.fcd', ['data' => $dataValues]);
-            }
-           
+                Project::create($dataValues);
+               return view('project.message.success', ['data' => $dataValues]);
         }
         return view('project.methods.fcd', ['data' => $dataValues]);
     } else {

@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ __('Sisval') }}</title>
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('material') }}/img/apple-icon.png">
-    <!-- <link rel="icon" type="image/png" href="{{ asset('material') }}/img/favicon.png"> -->
+    <link rel="icon" type="image/png" href="{{ asset('material') }}/img/favicon.png">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -40,8 +40,8 @@
                   <div class="badge-colors ml-auto mr-auto">
                     <span class="badge filter badge-purple " data-color="purple"></span>
                     <span class="badge filter badge-azure" data-color="azure"></span>
-                    <span class="badge filter badge-green" data-color="green"></span>
-                    <span class="badge filter badge-warning active" data-color="orange"></span>
+                    <span class="badge filter badge-green active" data-color="green"></span>
+                    <span class="badge filter badge-warning " data-color="orange"></span>
                     <span class="badge filter badge-danger" data-color="danger"></span>
                     <span class="badge filter badge-rose" data-color="rose"></span>
                   </div>
