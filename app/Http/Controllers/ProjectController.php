@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Http\Request;
+
 class ProjectController extends Controller
 {
     /**
@@ -15,7 +16,6 @@ class ProjectController extends Controller
      */
     public function index(Request $request)
     {
-
     }
 
     /**
@@ -33,28 +33,37 @@ class ProjectController extends Controller
         ];
         $values = [];
 
-    if($request->input('method') == 'Fluxo de caixa descontado') {
-        $tax = $request->input('tax');
-        $period = $request->input('period');
-        if($tax && $period) {
+        if ($request->input('method') == 'Fluxo de caixa descontado') {
+            $tax = $request->input('tax');
+            $period = $request->input('period');
+            if ($tax && $period) {
                 // var_dump($values);
                 // for($i=1; $i <= $request->input('period'); $i++ ) {
                 //    $dataValues['calculated'] = $dataValues['calculated'] + $request->input('value')/ pow($tax,$i);
                 Project::create($dataValues);
-               return view('project.message.success', ['data' => $dataValues]);
+                return view('project.message.success', ['data' => $dataValues]);
+            }
+            return view('project.methods.fcd', ['data' => $dataValues]);
+        } else if ($request->input('method') == 'Royalty Rates') {
+            $tax = $request->input('tax');
+            $value = $request->input('value');
+            if ($tax && $value) {
+                $dataValues['calculated'] = ($value * $tax) / 100;
+                Project::create($dataValues);
+                return view('project.message.success', ['data' => $dataValues]);
+            }
+            return view('project.methods.royalty', ['data' => $dataValues]);
+        } else {
+            return view('project.message.fail');
         }
-        return view('project.methods.fcd', ['data' => $dataValues]);
-    } else {
-        return view('project.message.fail');
-    }
-    // return view('project.index');
-    // else if ($request->input('end')) {               
-    //     Project::create($dataValues);
-    //     return view('project.message.success');
-    // }
-    // else {
-    //     return view('project.index');
-    // }
+        // return view('project.index');
+        // else if ($request->input('end')) {               
+        //     Project::create($dataValues);
+        //     return view('project.message.success');
+        // }
+        // else {
+        //     return view('project.index');
+        // }
     }
 
     /**
@@ -65,8 +74,8 @@ class ProjectController extends Controller
      */
     public function update(StoreProjectRequest $request)
     {
-        auth()->user()->update($request->all());
-        return back()->withStatus(__('Project successfully updated.'));
+        // auth()->user()->update($request->all());
+        // return back()->withStatus(__('Project successfully updated.'));
     }
 
     /**
@@ -77,7 +86,7 @@ class ProjectController extends Controller
      */
     public static function show(Project $project)
     {
-        
+
         return Project::all();
     }
 
