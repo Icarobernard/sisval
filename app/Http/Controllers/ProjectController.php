@@ -53,17 +53,13 @@ class ProjectController extends Controller
                 return view('project.message.success', ['data' => $dataValues]);
             }
             return view('project.methods.royalty', ['data' => $dataValues]);
+        } else if ($request->input('method') == 'Pita') {
+            if ($request->input('method') == 0) {
+            }
+            return view('project.methods.pita', ['data' => $dataValues]);
         } else {
             return view('project.message.fail');
         }
-        // return view('project.index');
-        // else if ($request->input('end')) {               
-        //     Project::create($dataValues);
-        //     return view('project.message.success');
-        // }
-        // else {
-        //     return view('project.index');
-        // }
     }
 
     /**
