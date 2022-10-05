@@ -31,37 +31,86 @@ class ProjectController extends Controller
             'method' => $request->input('method'),
             'calculated' => $request->input('calculated'),
         ];
-        $values = [];
 
         if ($request->input('method') == 'Fluxo de caixa descontado') {
-            $tax = $request->input('tax');
-            $period = $request->input('period');
-            if ($tax && $period) {
-                // var_dump($values);
-                // for($i=1; $i <= $request->input('period'); $i++ ) {
-                //    $dataValues['calculated'] = $dataValues['calculated'] + $request->input('value')/ pow($tax,$i);
-                Project::create($dataValues);
-                return view('project.message.success', ['data' => $dataValues]);
-            }
             return view('project.methods.fcd', ['data' => $dataValues]);
         } else if ($request->input('method') == 'Royalty Rates') {
-            $tax = $request->input('tax');
-            $value = $request->input('value');
-            if ($tax && $value) {
-                $dataValues['calculated'] = ($value * $tax) / 100;
-                Project::create($dataValues);
-                return view('project.message.success', ['data' => $dataValues]);
-            }
             return view('project.methods.royalty', ['data' => $dataValues]);
         } else if ($request->input('method') == 'Pita') {
-            if ($request->input('method') == 0) {
-            }
             return view('project.methods.pita', ['data' => $dataValues]);
         } else {
             return view('project.message.fail');
         }
     }
 
+    public function royalty(Request $request)
+    {
+        $dataValues = [
+            'name' =>  $request->input('name'),
+            'responsible' =>  $request->input('responsible'),
+            'method' => $request->input('method'),
+            'calculated' => $request->input('calculated'),
+        ];
+        $tax = $request->input('tax');
+        $value = $request->input('value');
+        if ($tax && $value) {
+            $dataValues['calculated'] = ($value * $tax) / 100;
+            Project::create($dataValues);
+            return view('project.message.success', ['data' => $dataValues]);
+        }
+    }
+    public function pita(Request $request)
+    {
+        $dataValues = [
+            'name' =>  $request->input('name'),
+            'responsible' =>  $request->input('responsible'),
+            'method' => $request->input('method'),
+            'calculated' => $request->input('calculated'),
+        ];
+
+        $npt = [
+            '1' => ['low' => 1, 'medium' => 4, 'high' => 7],
+            '2' => ['low' => 2, 'medium' => 5, 'high' => 8],
+            '3' => ['low' => 3, 'medium' => 6, 'high' => 9],
+            '4' => ['low' => 6, 'medium' => 12, 'high' => 18],
+            '5' => ['low' => 8, 'medium' => 14, 'high' => 20],
+            '6' => ['low' => 10, 'medium' => 16, 'high' => 22]
+
+        ];
+
+        $contribution = $npt[$request->input('npt')];
+        $contribution = $contribution[$request->input('contribution')];
+
+        $volume = $npt[$request->input('npt')];
+        $volume = $volume[$request->input('volume')];
+
+        $investment = $npt[$request->input('npt')];
+        $investment = $investment[$request->input('investment')];
+
+        $dataValues['calculated'] = ($request->input('maintenance') * ($contribution + $volume + $investment) * (1 - $request->input('time') * 0.0667));
+
+        Project::create($dataValues);
+        return view('project.message.success', ['contribution' => $contribution]);
+    }
+
+    public function fcd(Request $request)
+    {
+        $dataValues = [
+            'name' =>  $request->input('name'),
+            'responsible' =>  $request->input('responsible'),
+            'method' => $request->input('method'),
+            'calculated' => $request->input('calculated'),
+        ];
+        $tax = $request->input('tax');
+        $period = $request->input('period');
+        if ($tax && $period) {
+            // var_dump($values);
+            // for($i=1; $i <= $request->input('period'); $i++ ) {
+            //    $dataValues['calculated'] = $dataValues['calculated'] + $request->input('value')/ pow($tax,$i);
+            Project::create($dataValues);
+            return view('project.message.success', ['data' => $dataValues]);
+        }
+    }
     /**
      * Store a newly created resource in storage.
      *

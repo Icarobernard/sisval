@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-lg-12 col-md-6 col-sm-8 ml-auto mr-auto">
-                <form class="form" method="POST" action="{{ route('project.create') }}">
+                <form class="form" method="POST" action="{{ route('project.pita') }}">
                     @csrf
                     @method('post')
 
@@ -16,18 +16,18 @@
                             <h4 class="card-title"><strong>{{ __('Cálculo método Pita') }}</strong></h4>
                         </div>
                         <div class="card-body ">
-                            <div class="bmd-form-group{{ $errors->has('value') ? ' has-danger' : '' }}">
+                            <!-- <div class="bmd-form-group{{ $errors->has('value') ? ' has-danger' : '' }}">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                             <i class="fa fa-list-ol"></i>
                                         </span>
                                     </div>
-                                    <input type="number" name="value" class="form-control"
+                                    <input type="number" name="valuePita" class="form-control"
                                         placeholder="{{ __('Informe o valor da patente...') }}"
                                         value="{{ old('value') }}" required>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="bmd-form-group{{ $errors->has('maintenance') ? ' has-danger' : '' }} mt-3">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
@@ -67,9 +67,9 @@
                                         <option value="4">Nível 4</option>
                                         <option value="5">Nível 5</option>
                                         <option value="6">Nível 6</option>
-                                        <option value="7">Nível 7</option>
+                                        <!-- <option value="7">Nível 7</option>
                                         <option value="8">Nível 8</option>
-                                        <option value="9">Nível 9</option>
+                                        <option value="9">Nível 9</option> -->
                                     </select>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="radio" name="contribution"
-                                                id="inlineRadio1" value="elevated">Alto
+                                                id="inlineRadio1" value="high">Alto
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>
@@ -139,7 +139,7 @@
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="radio" name="volume" id="inlineRadio1"
-                                                value="elevated">Alto
+                                                value="high">Alto
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>
@@ -176,7 +176,7 @@
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="radio" name="investment"
-                                                id="inlineRadio1" value="elevated">Alto
+                                                id="inlineRadio1" value="high">Alto
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>

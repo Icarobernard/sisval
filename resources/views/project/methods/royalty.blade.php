@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-lg-12 col-md-6 col-sm-8 ml-auto mr-auto">
-                <form class="form" method="POST" action="{{ route('project.update') }}">
+                <form class="form" method="POST" action="{{ route('project.royalty') }}">
                     @csrf
                     @method('post')
 
