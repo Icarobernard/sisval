@@ -14,41 +14,58 @@
                                 style="padding-left: 10px; padding-top: 10px" class="fa fa-arrow-left"></i> </a>
                         <div class="card-header text-center">
                             <h4 class="card-title"><strong>{{ __('Cálculo método Pita') }}</strong></h4>
+                            <span>Pita = Ctotal . (Pmargem + Pvolume + Pinvestimento + Plegal). (1-d.t) </span>
                         </div>
                         <div class="card-body ">
-                            <!-- <div class="bmd-form-group{{ $errors->has('value') ? ' has-danger' : '' }}">
+                            <div class="bmd-form-group mb-3">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                             <i class="fa fa-list-ol"></i>
                                         </span>
                                     </div>
-                                    <input type="number" name="valuePita" class="form-control"
-                                        placeholder="{{ __('Informe o valor da patente...') }}"
-                                        value="{{ old('value') }}" required>
-                                </div>
-                            </div> -->
-                            <div class="bmd-form-group{{ $errors->has('maintenance') ? ' has-danger' : '' }} mt-3">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <i class="fa fa-list-ol"></i>
-                                        </span>
-                                    </div>
-                                    <input type="number" name="maintenance" class="form-control"
-                                        placeholder="{{ __('Custo de manutenção da patente...') }}"
+                                    <input title="Ctotal: Custo total de manutenção das patentes em todos os países (anuidades e 
+gastos com escritórios de patentes)" type="number" name="maintenance" class="form-control"
+                                        placeholder="{{ __('Custo de manutenção da patente (Ctotal)...') }}"
                                         value="{{ old('maintenance') }}" required>
                                 </div>
                             </div>
-                            <div class="bmd-form-group{{ $errors->has('time') ? ' has-danger' : '' }} mt-3">
+                            <div class="bmd-form-group mb-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-list-ol"></i>
+                                        </span>
+                                    </div>
+                                    <input title="d: A taxa de depreciação (reduzido em 5% a.a. a cada ano)"
+                                        type="number" name="tax" class="form-control"
+                                        placeholder="{{ __('Informe a taxa de depreciação da patente (d)...') }}"
+                                        value="{{ old('maintenance') }}" required>
+                                </div>
+                            </div>
+                            <div class="bmd-form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-list-ol"></i>
+                                        </span>
+                                    </div>
+                                    <input title=" Plegal: Prêmio adicional por concessão nos países (adicionado o valor de +5 para 
+cada país onde a patente foi concedida)" type="number" name="concession" class="form-control"
+                                        placeholder="{{ __('Informe o valor PLegal da patente...') }}"
+                                        value="{{ old('value') }}" required>
+                                </div>
+                            </div>
+                            <div class="bmd-form-group mt-3">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                             <i class="fa fa-calendar"></i>
                                         </span>
                                     </div>
-                                    <input type="number" name="time" class="form-control"
-                                        placeholder="{{ __('Tempo de utilização da tecnologia...') }}"
+                                    <input title="t: Tempo de utilização da tecnologia" type="number" name="time"
+                                        class="form-control"
+                                        placeholder="{{ __('Tempo de utilização da tecnologia (t)...') }}"
                                         value="{{ old('time') }}" required>
                                 </div>
                             </div>
@@ -59,7 +76,8 @@
                                             <!-- <i class="fa fa-calendar"></i> -->
                                         </span>
                                     </div>
-                                    <select name="npt" class="form-control" id="exampleFormControlSelect1">
+                                    <select title="Nível de Prontidão Tecnológica da Patente (NPT)" name="npt"
+                                        class="form-control" id="exampleFormControlSelect1">
                                         <option>Selecione o nível NPT </option>
                                         <option value="1">Nível 1</option>
                                         <option value="2">Nível 2</option>
@@ -83,7 +101,9 @@
 
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="contribution"
+                                            <input
+                                                title="Pmargem: Baixo prêmio no critério margem de contribuição (Pmargem)"
+                                                class="form-check-input" type="radio" name="contribution"
                                                 id="inlineRadio1" value="low"> Baixo
                                             <span class="circle">
                                                 <span class="check"></span>
@@ -92,7 +112,8 @@
                                     </div>
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="contribution"
+                                            <input title="Pmargem: Moderado prêmio no critério margem de contribuição"
+                                                class="form-check-input" type="radio" name="contribution"
                                                 id="inlineRadio2" value="medium"> Moderado
                                             <span class="circle">
                                                 <span class="check"></span>
@@ -101,7 +122,8 @@
                                     </div>
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="contribution"
+                                            <input title="Pmargem: Alto prêmio no critério margem de contribuição"
+                                                class="form-check-input" type="radio" name="contribution"
                                                 id="inlineRadio1" value="high">Alto
                                             <span class="circle">
                                                 <span class="check"></span>
@@ -114,13 +136,14 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">
-                                            Escolha o critério da margem de volume
+                                            Escolha o critério da margem de volume (Pvolume)
                                         </label>
                                     </div>
 
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="volume" id="inlineRadio1"
+                                            <input title="Pvolume: Baixo prêmio no critério volume"
+                                                class="form-check-input" type="radio" name="volume" id="inlineRadio1"
                                                 value="low"> Baixo
                                             <span class="circle">
                                                 <span class="check"></span>
@@ -129,7 +152,8 @@
                                     </div>
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="volume" id="inlineRadio2"
+                                            <input title="Pvolume: Moderado prêmio no critério volume"
+                                                class="form-check-input" type="radio" name="volume" id="inlineRadio2"
                                                 value="medium"> Moderado
                                             <span class="circle">
                                                 <span class="check"></span>
@@ -138,7 +162,8 @@
                                     </div>
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="volume" id="inlineRadio1"
+                                            <input title="Pvolume: Alto prêmio no critério volume"
+                                                class="form-check-input" type="radio" name="volume" id="inlineRadio1"
                                                 value="high">Alto
                                             <span class="circle">
                                                 <span class="check"></span>
@@ -151,7 +176,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">
-                                            Escolha o critério do investimento em ativos de produção
+                                            Escolha o critério do investimento em ativos de produção (Pinvestimento)
                                         </label>
                                     </div>
 

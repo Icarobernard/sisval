@@ -87,7 +87,12 @@ class ProjectController extends Controller
         $investment = $npt[$request->input('npt')];
         $investment = $investment[$request->input('investment')];
 
-        $dataValues['calculated'] = ($request->input('maintenance') * ($contribution + $volume + $investment) * (1 - $request->input('time') * 0.0667));
+        $concession = $request->input('concession');
+        $maintenance = $request->input('maintenance');
+        $time = $request->input('time');
+        $tax = $request->input('tax') / 100;
+
+        $dataValues['calculated'] = ($maintenance * ($contribution + $volume + $investment + $concession) * (1 - $time * $tax));
 
         Project::create($dataValues);
         return view('project.message.success', ['contribution' => $contribution]);
