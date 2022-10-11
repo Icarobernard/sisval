@@ -15,7 +15,7 @@ use App\Models\Project;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Auth::routes();
@@ -56,11 +56,11 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
+	Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
 	Route::get('projects', function (Project $project) {
-		return view('project.index', ['data'=>ProjectController::show($project) ]);
+		return view('project.index', ['data' => ProjectController::show($project)]);
 	})->name('project');
-	
+
 	Route::get('register/project', function () {
 		return view('project.register');
 	})->name('registerProject');
@@ -73,10 +73,11 @@ Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->
 		return view('project.index');
 	});
 	Route::put('project', ['as' => 'project.update', 'uses' => 'App\Http\Controllers\ProjectController@update']);
-
+	Route::post('project/royalty', ['as' => 'project.royalty', 'uses' => 'App\Http\Controllers\ProjectController@royalty']);
+	Route::post('project/fcd', ['as' => 'project.fcd', 'uses' => 'App\Http\Controllers\ProjectController@fcd']);
+	Route::post('project/pita', ['as' => 'project.pita', 'uses' => 'App\Http\Controllers\ProjectController@pita']);
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
-
