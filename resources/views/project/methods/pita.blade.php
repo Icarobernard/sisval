@@ -38,7 +38,7 @@ gastos com escritórios de patentes)" type="number" name="maintenance" class="fo
                                         </span>
                                     </div>
                                     <input title="d: A taxa de depreciação (reduzido em 5% a.a. a cada ano)"
-                                        type="number" name="tax" class="form-control"
+                                        type="number" step="0.01" name="tax" class="form-control"
                                         placeholder="{{ __('Informe a taxa de depreciação da patente (d)...') }}"
                                         value="{{ old('maintenance') }}" required>
                                 </div>

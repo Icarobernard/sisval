@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('contribution');
             $table->string('volume');
             $table->string('investment');
+            $table->integer('id_project');
             $table->timestamps();
         });
     }
