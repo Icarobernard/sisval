@@ -22,9 +22,9 @@ class PitaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($dataValues)
     {
-        //
+        Pita::create($dataValues);
     }
 
     /**

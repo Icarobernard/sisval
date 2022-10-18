@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="content">
+    <script>
+    function redirect(id) {
+        return window.location.href = '/project/' + id
+    }
+    </script>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -14,9 +19,9 @@
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead class="">
-                                    <th>
+                                    <!-- <th>
                                         ID
-                                    </th>
+                                    </th> -->
                                     <th>
                                         Nome do projeto
                                     </th>
@@ -32,10 +37,10 @@
                                 </thead>
                                 <tbody>
                                     @foreach($data as $value)
-                                    <tr>
-                                        <td>
+                                    <tr style="cursor: pointer" onclick="redirect( {{ $value['id'] }} );">
+                                        <!-- <td>
                                             {{ $value['id'] }}
-                                        </td>
+                                        </td> -->
                                         <td>
                                             {{ $value['name'] }}
                                         </td>
@@ -58,5 +63,6 @@
             </div>
         </div>
     </div>
+
 </div>
 @endsection

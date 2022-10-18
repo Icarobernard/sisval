@@ -68,11 +68,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('register/success', function () {
 		return view('project.success');
 	})->name('success');
-
+	// Route::put('project/edit', ['as' => 'project.update', 'uses' => 'App\Http\Controllers\ProjectController@update']);
+	Route::get('project/{id}', ['as' => 'project.find', 'uses' => 'App\Http\Controllers\ProjectController@find']);
 	Route::post('project', ['as' => 'project.create', 'uses' => 'App\Http\Controllers\ProjectController@create'], function () {
 		return view('project.index');
 	});
-	Route::put('project', ['as' => 'project.update', 'uses' => 'App\Http\Controllers\ProjectController@update']);
+	Route::post('project/{id}/edit', ['as' => 'project.update', 'uses' => 'App\Http\Controllers\ProjectController@pitaUpdate']);
 	Route::post('project/royalty', ['as' => 'project.royalty', 'uses' => 'App\Http\Controllers\ProjectController@royalty']);
 	Route::post('project/fcd', ['as' => 'project.fcd', 'uses' => 'App\Http\Controllers\ProjectController@fcd']);
 	Route::post('project/pita', ['as' => 'project.pita', 'uses' => 'App\Http\Controllers\ProjectController@pita']);
