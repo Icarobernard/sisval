@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Project;
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,7 @@ class HomeController extends Controller
     public static function index()
     {
         $projects = Project::all();
-        return view('dashboard', ['projects'=> count($projects)]);
+        $users = User::all();
+        return view('dashboard', ['projects' => count($projects)])->with('users', $users);
     }
 }

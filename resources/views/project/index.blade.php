@@ -51,7 +51,7 @@
                                             {{ $value['method'] }}
                                         </td>
                                         <td>
-                                            R$ {{ $value['calculated'] }}
+                                            R$ {{round($value['calculated']) }}
                                         </td>
                                     </tr>
                                     @endforeach
