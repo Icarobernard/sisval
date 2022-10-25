@@ -237,7 +237,7 @@ cada país onde a patente foi concedida)" type="number" name="concession" class=
                     }
                     </style>
                     <div class="helper">
-                        <button class="collapsible btn btn-primary" type="button">
+                        <button class="collapsible btn btn-success" type="button">
                             Glossário
                         </button>
                         <div class="support">
@@ -292,7 +292,7 @@ cada país onde a patente foi concedida)" type="number" name="concession" class=
                         </div>
                     </div>
                     <div class="helper">
-                        <button class="collapsible btn btn-primary" type="button">
+                        <button class="collapsible btn btn-success" type="button">
                             NPT detalhado
                         </button>
                         <div class="support">
