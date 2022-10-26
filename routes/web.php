@@ -74,6 +74,7 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('project.index');
 	});
 	Route::post('project/{id}/edit', ['as' => 'project.update', 'uses' => 'App\Http\Controllers\ProjectController@pitaUpdate']);
+	Route::post('project/{id}/delete', ['as' => 'project.destroy', 'uses' => 'App\Http\Controllers\ProjectController@destroy']);
 	Route::post('project/royalty', ['as' => 'project.royalty', 'uses' => 'App\Http\Controllers\ProjectController@royalty']);
 	Route::post('project/fcd', ['as' => 'project.fcd', 'uses' => 'App\Http\Controllers\ProjectController@fcd']);
 	Route::post('project/pita', ['as' => 'project.pita', 'uses' => 'App\Http\Controllers\ProjectController@pita']);
