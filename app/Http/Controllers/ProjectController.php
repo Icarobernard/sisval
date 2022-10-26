@@ -207,9 +207,13 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project, $id)
+    public function destroy(Request $request, $id)
     {
-        Project::destroy($id);
-        Pita::where('project_id', '=', $id)->delete();
+        $project = Project::find($id);
+        if ($project['method'] == 'Pita') {
+            Pita::where('project_id', $id)->delete();
+        }
+        $project->delete();
+        return view('project.message.success');
     }
 }
