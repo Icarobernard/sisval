@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RoyaltyController;
 use App\Models\Project;
 /*
 |--------------------------------------------------------------------------
@@ -70,14 +71,14 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('success');
 	// Route::put('project/edit', ['as' => 'project.update', 'uses' => 'App\Http\Controllers\ProjectController@update']);
 	Route::get('project/{id}', ['as' => 'project.find', 'uses' => 'App\Http\Controllers\ProjectController@find']);
-	Route::post('project', ['as' => 'project.create', 'uses' => 'App\Http\Controllers\ProjectController@create'], function () {
+	Route::post('project', ['as' => 'project.redirect', 'uses' => 'App\Http\Controllers\ProjectController@redirect'], function () {
 		return view('project.index');
 	});
-	Route::post('project/{id}/edit', ['as' => 'project.update', 'uses' => 'App\Http\Controllers\ProjectController@pitaUpdate']);
+	Route::post('project/{id}/edit', ['as' => 'project.update', 'uses' => 'App\Http\Controllers\ProjectController@updatePita']);
 	Route::post('project/{id}/delete', ['as' => 'project.destroy', 'uses' => 'App\Http\Controllers\ProjectController@destroy']);
-	Route::post('project/royalty', ['as' => 'project.royalty', 'uses' => 'App\Http\Controllers\ProjectController@royalty']);
-	Route::post('project/fcd', ['as' => 'project.fcd', 'uses' => 'App\Http\Controllers\ProjectController@fcd']);
-	Route::post('project/pita', ['as' => 'project.pita', 'uses' => 'App\Http\Controllers\ProjectController@pita']);
+	Route::post('project/royalty', ['as' => 'royalty.create', 'uses' => 'App\Http\Controllers\RoyaltyController@create']);
+	Route::post('project/fcd', ['as' => 'project.fcd', 'uses' => 'App\Http\Controllers\ProjectController@createFcd']);
+	Route::post('project/pita', ['as' => 'project.pita', 'uses' => 'App\Http\Controllers\ProjectController@createPita']);
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);

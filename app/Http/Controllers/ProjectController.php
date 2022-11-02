@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\Pita;
+use App\Models\Royalty;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Http\Request;
@@ -25,7 +26,7 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function redirect(Request $request)
     {
         $dataValues = [
             'name' =>  $request->input('name'),
@@ -37,7 +38,7 @@ class ProjectController extends Controller
         if ($request->input('method') == 'Fluxo de caixa descontado') {
             return view('project.methods.fcd', ['data' => $dataValues]);
         } else if ($request->input('method') == 'Royalty Rates') {
-            return view('project.methods.royalty', ['data' => $dataValues]);
+            return view('project.methods.royalty.index', ['data' => $dataValues])->with('step', false);
         } else if ($request->input('method') == 'Pita') {
             return view('project.methods.pita', ['data' => $dataValues]);
         } else {
@@ -56,23 +57,8 @@ class ProjectController extends Controller
         return view('project.details', ['data' => $data])->with('method', $method);
     }
 
-    public function royalty(Request $request)
-    {
-        $dataValues = [
-            'name' =>  $request->input('name'),
-            'responsible' =>  $request->input('responsible'),
-            'method' => $request->input('method'),
-            'calculated' => $request->input('calculated'),
-        ];
-        $tax = $request->input('tax');
-        $value = $request->input('value');
-        if ($tax && $value) {
-            $dataValues['calculated'] = ($value * $tax) / 100;
-            Project::create($dataValues);
-            return view('project.message.success', ['data' => $dataValues]);
-        }
-    }
-    public function pita(Request $request)
+
+    public function createPita(Request $request)
     {
         $dataValues = [
             'name' =>  $request->input('name'),
@@ -114,23 +100,8 @@ class ProjectController extends Controller
         return view('project.message.success');
     }
 
-    public function fcd(Request $request)
+    public function createFcd(Request $request, $id)
     {
-        $dataValues = [
-            'name' =>  $request->input('name'),
-            'responsible' =>  $request->input('responsible'),
-            'method' => $request->input('method'),
-            'calculated' => $request->input('calculated'),
-        ];
-        $tax = $request->input('tax');
-        $period = $request->input('period');
-        if ($tax && $period) {
-            // var_dump($values);
-            // for($i=1; $i <= $request->input('period'); $i++ ) {
-            //    $dataValues['calculated'] = $dataValues['calculated'] + $request->input('value')/ pow($tax,$i);
-            Project::create($dataValues);
-            return view('project.message.success', ['data' => $dataValues]);
-        }
     }
     /**
      * Store a newly created resource in storage.
@@ -138,7 +109,7 @@ class ProjectController extends Controller
      * @param  \App\Http\Requests\StoreProjectRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function pitaUpdate(Request $request, $id)
+    public function updatePita(Request $request, $id)
     {
         $data = Project::find($id);
         if ($data['method'] == 'Pita') {
@@ -182,7 +153,6 @@ class ProjectController extends Controller
      */
     public static function show(Project $project)
     {
-
         return Project::all();
     }
 
