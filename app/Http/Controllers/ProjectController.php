@@ -53,6 +53,9 @@ class ProjectController extends Controller
         if ($data['method'] == 'Pita') {
             $method = Pita::where('project_id', $data['id'])->first();
         }
+        if ($data['method'] == 'Royalty Rates') {
+            $method = Royalty::where('project_id', $id)->get();
+        }
 
         return view('project.details', ['data' => $data])->with('method', $method);
     }
@@ -182,6 +185,9 @@ class ProjectController extends Controller
         $project = Project::find($id);
         if ($project['method'] == 'Pita') {
             Pita::where('project_id', $id)->delete();
+        }
+        if ($project['method'] == 'Royalty Rates') {
+            Royalty::where('project_id', $id)->delete();
         }
         $project->delete();
         return view('project.message.success');

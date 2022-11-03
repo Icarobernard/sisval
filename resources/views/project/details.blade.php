@@ -7,14 +7,11 @@
             <div class="col-lg-12 col-md-6 col-sm-8 ml-auto mr-auto">
 
                 @if ($data['method']=='Pita')
-                @include('edit.pita');
+                @include('edit.pita')
+                @elseif($data['method']=='Royalty Rates')
+                @include('edit.royalty')
                 @endif
             </div>
         </div>
-
     </div>
-</div>
-</div>
-</div>
-</div>
-@endsection
+    @endsection

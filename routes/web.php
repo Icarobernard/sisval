@@ -76,6 +76,8 @@ Route::group(['middleware' => 'auth'], function () {
 	});
 	Route::post('project/{id}/edit', ['as' => 'project.update', 'uses' => 'App\Http\Controllers\ProjectController@updatePita']);
 	Route::post('project/{id}/delete', ['as' => 'project.destroy', 'uses' => 'App\Http\Controllers\ProjectController@destroy']);
+	Route::post('royalty/{id}/{project}/delete', ['as' => 'royalty.destroy', 'uses' => 'App\Http\Controllers\RoyaltyController@destroy']);
+	Route::post('royalty/{id}/edit', ['as' => 'royalty.update', 'uses' => 'App\Http\Controllers\RoyaltyController@update']);
 	Route::post('project/royalty', ['as' => 'royalty.create', 'uses' => 'App\Http\Controllers\RoyaltyController@create']);
 	Route::post('project/fcd', ['as' => 'project.fcd', 'uses' => 'App\Http\Controllers\ProjectController@createFcd']);
 	Route::post('project/pita', ['as' => 'project.pita', 'uses' => 'App\Http\Controllers\ProjectController@createPita']);

@@ -1,4 +1,3 @@
-@section('content')
 <form class="form" method="POST" action="/project/{{$data['id']}}/edit">
     @csrf
     @method('post')
@@ -241,6 +240,3 @@
     @method('post')
     <button type="submit" class="btn btn-danger btn-md">{{ __('Excluir método') }}</button>
 </form>
-</div>
-</div>
-@endsection
