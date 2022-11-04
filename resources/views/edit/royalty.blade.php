@@ -67,19 +67,18 @@
                             <th scope="col">Valor de venda</th>
                             <th scope="col">Quantidade vendida</th>
                             <th scope="col">Valor royalty</th>
-                            <!-- <th scope="col">Operação</th> -->
+                            <th scope="col">Operação</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($method as $value)
                         <tr>
-                            <!-- <th scope="row">$value[period]</th> -->
                             <td> {{$value['period']}}</td>
                             <td> {{$value['sale']}}</td>
                             <td> {{$value['unity']}}</td>
                             <td> {{$value['royalty']}}</td>
-                            <!-- <td>
+                            <td>
                                 <form class="form" method="post"
                                     action="/royalty/{{$value['id']}}/{{$value['project_id']}}/delete">
                                     @csrf
@@ -88,12 +87,12 @@
                                             class="fa fa-trash"></i></button>
                                 </form>
 
-                            </td> -->
+                            </td>
                             @endforeach
 
                         </tr>
                         <tr>
-                            <td> <input disabled type="number" name="period" class="form-control" placeholder=""
+                            <td> <input type="number" name="period" class="form-control" placeholder=""
                                     value="{{count($method)+1}}" required> </td>
                             <td> <input type="number" name="sale" class="form-control"
                                     placeholder="{{ __('Informe o preço de venda..') }}" value="" required> </td>
@@ -104,7 +103,7 @@
                 </table>
             </div>
             <div class="card-footer justify-content-center">
-                <button type="submit" class="btn btn-primary btn-md">{{ __('Recalcular método') }}</button>
+                <button type="submit" class="btn btn-success btn-md">{{ __('Adicionar royalty') }}</button>
     </form>
     <form class="form" method="post" action="/project/{{$data['id']}}/delete">
         @csrf

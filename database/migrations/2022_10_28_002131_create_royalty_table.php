@@ -21,6 +21,7 @@ return new class extends Migration
             $table->double('profit');
             $table->double('royalty');
             $table->double('tax');
+            $table->double('rate');
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects');
             $table->timestamps();

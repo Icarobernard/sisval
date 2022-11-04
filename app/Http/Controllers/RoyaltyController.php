@@ -18,7 +18,7 @@ class RoyaltyController extends Controller
     {
         $tax = $request->input('tax');
         $profit = $request->input('unity') * $request->input('sale');
-        $royalty = $profit * $tax / 100;
+        $royalty = $profit * ($request->input('rate') / 100) * $tax / 100;
         $idProject = 0;
 
         $royaltyValues = [
@@ -28,6 +28,7 @@ class RoyaltyController extends Controller
             'sale' => $request->input('sale'),
             'profit' => $request->input('unity') * $request->input('sale'),
             'royalty' => $royalty,
+            'rate' => $request->input('rate'),
             'project_id' => $idProject,
         ];
         $dataValues = [
@@ -43,17 +44,32 @@ class RoyaltyController extends Controller
         $royaltyValues['project_id'] = $idProject;
         Royalty::create($royaltyValues);
         $dataValues['calculated'] = $royalty;
-
+        RoyaltyController::recalculated($idProject);
         return redirect('/project/' . $idProject);
         // return view('project.methods.royalty.index', ['data' => $dataValues])->with('step', true);
     }
 
+    public function recalculated($id)
+    {
+
+        $data = Project::find($id);
+        $royalties = Royalty::where('project_id', $id)->orderBy('period')->get();
+
+        $recalculated = 0;
+        foreach ($royalties as $value) {
+            $recalculated = $recalculated + $value['profit'] * ($value['tax'] / 100) * ($value['rate'] / 100);
+        }
+        $data->calculated = $recalculated;
+        $data->save();
+    }
     public function update(Request $request, $id)
     {
         $data = Project::find($id);
-        $tax = $request->input('tax');
+        $value = Royalty::where('project_id', $id)->orderBy('period')->first();
+        $tax = $value->tax;
+        $rate = $value->rate;
         $profit = $request->input('unity') * $request->input('sale');
-        $royalty = $profit * $tax / 100;
+        $royalty = $profit * ($rate / 100) * ($tax / 100);
 
         $royaltyValues = [
             'tax' => $tax,
@@ -62,15 +78,15 @@ class RoyaltyController extends Controller
             'sale' => $request->input('sale'),
             'profit' => $request->input('unity') * $request->input('sale'),
             'royalty' => $royalty,
+            'rate' => $rate,
             'project_id' => $id,
         ];
-        $royalty = Royalty::where('project_id', $id)->orderBy('period')->first();
-        $royaltyValues['tax'] = $royalty->tax;
-        $royaltyValues['period'] = $royalty->period + 1;
+
+
+        // $royaltyValues['period'] =  count(Royalty::where('project_id', $id)->get()) + 1;
         Royalty::create($royaltyValues);
-        // Royalty::where('id', $request->input('id'))->update(['concession' => $concession, 'pvolume' => $request->input('volume'), 'pinvestimento' => $request->input('investment'), 'pmargem' => $request->input('contribution'),  'npt' => $request->input('npt'), 'investment' =>  $investment, 'maintenance' => $maintenance, 'volume' => $volume, 'contribution' => $contribution, 'period' => $period, 'tax' => $request->input('tax')]);
-        // $data->calculated = ($maintenance * ($contribution + $volume + $investment + $concession) * (1 - $period * $tax));
-        // $data->save();
+        RoyaltyController::recalculated($id);
+
         return redirect('/project/' . $id);
     }
     public static function show(Royalty $royalty)
@@ -79,7 +95,9 @@ class RoyaltyController extends Controller
     }
     public function destroy(Request $request, $id, $project)
     {
+        $data = Project::find($project);
         Royalty::where('id', $id)->delete();
+        RoyaltyController::recalculated($project);
         return redirect('/project/' . $project);
     }
 }

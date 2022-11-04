@@ -15,6 +15,7 @@ class Royalty extends Model
         'profit',
         'royalty',
         'tax',
+        'rate',
         'project_id'
     ];
 }

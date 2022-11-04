@@ -30,6 +30,20 @@
                                 </div>
                             </div>
                             <div class="bmd-form-group">
+                                <div class="bmd-form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-number"></i>
+                                            </span>
+                                        </div>
+                                        <input type="number" step="0.01" name="rate" class="form-control"
+                                            placeholder="{{ __('Informe a taxa de porcentagem de lucro...') }}" value=""
+                                            required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bmd-form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">

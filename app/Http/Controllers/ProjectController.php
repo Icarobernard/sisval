@@ -54,7 +54,7 @@ class ProjectController extends Controller
             $method = Pita::where('project_id', $data['id'])->first();
         }
         if ($data['method'] == 'Royalty Rates') {
-            $method = Royalty::where('project_id', $id)->get();
+            $method = Royalty::where('project_id', $id)->orderBy('period')->get();
         }
 
         return view('project.details', ['data' => $data])->with('method', $method);
