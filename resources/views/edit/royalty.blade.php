@@ -7,7 +7,6 @@
                 <h4 class="card-title"><strong>{{ __('Edição') }}</strong></h4>
             </div>
             <div class="card-body ">
-
                 <div class="bmd-form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -54,53 +53,55 @@
                                 Total Royalty
                             </span>
                         </div>
-                        <input disabled type="text" name="method" class="form-control" value="{{ $data['calculated'] }}"
-                            required>
+                        <!-- <input disabled type="text" name="method" class="form-control" value=""
+                            required> -->
+                        <h2>{{ $data['calculated'] }} </h2>
                     </div>
                 </div>
             </div>
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Período</th>
-                            <th scope="col">Valor de venda</th>
-                            <th scope="col">Quantidade vendida</th>
-                            <th scope="col">Valor royalty</th>
-                            <th scope="col">Operação</th>
+            <div class="card-body ">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Período</th>
+                                <th scope="col">Valor de venda</th>
+                                <th scope="col">Quantidade vendida</th>
+                                <th scope="col">Valor royalty</th>
+                                <th scope="col">Operação</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($method as $value)
-                        <tr>
-                            <td> {{$value['period']}}</td>
-                            <td> {{$value['sale']}}</td>
-                            <td> {{$value['unity']}}</td>
-                            <td> {{$value['royalty']}}</td>
-                            <td>
-                                <form class="form" method="post"
-                                    action="/royalty/{{$value['id']}}/{{$value['project_id']}}/delete">
-                                    @csrf
-                                    @method('post')
-                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                            class="fa fa-trash"></i></button>
-                                </form>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($method as $value)
+                            <tr>
+                                <td> {{$value['period']}}</td>
+                                <td> {{$value['sale']}}</td>
+                                <td> {{$value['unity']}}</td>
+                                <td> {{$value['royalty']}}</td>
+                                <td>
+                                    <form class="form" method="post"
+                                        action="/royalty/{{$value['id']}}/{{$value['project_id']}}/delete">
+                                        @csrf
+                                        @method('post')
+                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                class="fa fa-trash"></i></button>
+                                    </form>
 
-                            </td>
-                            @endforeach
-
-                        </tr>
-                        <tr>
-                            <td> <input type="number" name="period" class="form-control" placeholder=""
-                                    value="{{count($method)+1}}" required> </td>
-                            <td> <input type="number" name="sale" class="form-control"
-                                    placeholder="{{ __('Informe o preço de venda..') }}" value="" required> </td>
-                            <td> <input type="number" name="unity" class="form-control"
-                                    placeholder="{{ __('Informe a quantidade vendida.') }}" value="" required> </td>
-                        </tr>
-                    </tbody>
-                </table>
+                                </td>
+                                @endforeach
+                            </tr>
+                            <tr>
+                                <td> <input type="number" name="period" class="form-control" placeholder=""
+                                        value="{{count($method)+1}}" required> </td>
+                                <td> <input type="number" name="sale" class="form-control"
+                                        placeholder="{{ __('Informe o preço de venda..') }}" value="" required> </td>
+                                <td> <input type="number" name="unity" class="form-control"
+                                        placeholder="{{ __('Informe a quantidade vendida.') }}" value="" required> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="card-footer justify-content-center">
                 <button type="submit" class="btn btn-success btn-md">{{ __('Adicionar royalty') }}</button>
