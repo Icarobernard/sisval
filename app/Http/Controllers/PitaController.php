@@ -4,64 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\Pita;
-use App\Models\Royalty;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Http\Request;
-use App\Http\Controllers\PitaController;
 
-class ProjectController extends Controller
+class PitaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function redirect(Request $request)
-    {
-        $dataValues = [
-            'name' =>  $request->input('name'),
-            'responsible' =>  $request->input('responsible'),
-            'method' => $request->input('method'),
-            'calculated' => $request->input('calculated'),
-        ];
-
-        if ($request->input('method') == 'Fluxo de caixa descontado') {
-            return view('project.methods.fcd', ['data' => $dataValues]);
-        } else if ($request->input('method') == 'Royalty Rates') {
-            return view('project.methods.royalty.index', ['data' => $dataValues])->with('step', false);
-        } else if ($request->input('method') == 'Pita') {
-            return view('project.methods.pita.create', ['data' => $dataValues]);
-        } else {
-            return view('project.message.fail');
-        }
-    }
-
-    public function find(Request $request, $id)
-    {
-        $method = [];
-        $data = Project::find($id);
-        if ($data['method'] == 'Pita') {
-            $method = Pita::where('project_id', $data['id'])->first();
-        }
-        if ($data['method'] == 'Royalty Rates') {
-            $method = Royalty::where('project_id', $id)->orderBy('period')->get();
-        }
-
-        return view('project.details', ['data' => $data])->with('method', $method);
-    }
-
-
-    public function createPita(Request $request)
+    public function create(Request $request)
     {
         $dataValues = [
             'name' =>  $request->input('name'),
@@ -103,16 +57,13 @@ class ProjectController extends Controller
         return view('project.message.success');
     }
 
-    public function createFcd(Request $request, $id)
-    {
-    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreProjectRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function updatePita(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $data = Project::find($id);
         if ($data['method'] == 'Pita') {
@@ -154,42 +105,8 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public static function show(Project $project)
+    public static function show(Pita $pita)
     {
-        return Project::all();
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateProjectRequest  $request
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Request $request, $id)
-    {
-        $project = Project::find($id);
-        if ($project['method'] == 'Pita') {
-            Pita::where('project_id', $id)->delete();
-        }
-        if ($project['method'] == 'Royalty Rates') {
-            Royalty::where('project_id', $id)->delete();
-        }
-        $project->delete();
-        return view('project.message.success');
+        return Pita::all();
     }
 }

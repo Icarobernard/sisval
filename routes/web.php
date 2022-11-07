@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoyaltyController;
+use App\Http\Controllers\PitaController;
 use App\Models\Project;
 /*
 |--------------------------------------------------------------------------
@@ -74,13 +75,14 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('project', ['as' => 'project.redirect', 'uses' => 'App\Http\Controllers\ProjectController@redirect'], function () {
 		return view('project.index');
 	});
-	Route::post('project/{id}/edit', ['as' => 'project.update', 'uses' => 'App\Http\Controllers\ProjectController@updatePita']);
+
 	Route::post('project/{id}/delete', ['as' => 'project.destroy', 'uses' => 'App\Http\Controllers\ProjectController@destroy']);
 	Route::post('royalty/{id}/{project}/delete', ['as' => 'royalty.destroy', 'uses' => 'App\Http\Controllers\RoyaltyController@destroy']);
 	Route::post('royalty/{id}/edit', ['as' => 'royalty.update', 'uses' => 'App\Http\Controllers\RoyaltyController@update']);
 	Route::post('project/royalty', ['as' => 'royalty.create', 'uses' => 'App\Http\Controllers\RoyaltyController@create']);
 	Route::post('project/fcd', ['as' => 'project.fcd', 'uses' => 'App\Http\Controllers\ProjectController@createFcd']);
-	Route::post('project/pita', ['as' => 'project.pita', 'uses' => 'App\Http\Controllers\ProjectController@createPita']);
+	Route::post('project/pita', ['as' => 'pita.create', 'uses' => 'App\Http\Controllers\PitaController@create']);
+	Route::post('pita/{id}/edit', ['as' => 'pita.update', 'uses' => 'App\Http\Controllers\PitaController@update']);
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);

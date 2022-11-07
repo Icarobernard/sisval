@@ -1,4 +1,4 @@
-<form class="form" method="POST" action="/project/{{$data['id']}}/edit">
+<form class="form" method="POST" action="/pita/{{$data['id']}}/edit">
     @csrf
     @method('post')
     <div class="card card-login card-hidden mb-3">

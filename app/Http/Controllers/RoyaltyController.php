@@ -64,7 +64,7 @@ class RoyaltyController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $data = Project::find($id);
+        // $data = Project::find($id);
         $value = Royalty::where('project_id', $id)->orderBy('period')->first();
         $tax = $value->tax;
         $rate = $value->rate;
@@ -95,7 +95,7 @@ class RoyaltyController extends Controller
     }
     public function destroy(Request $request, $id, $project)
     {
-        $data = Project::find($project);
+        // $data = Project::find($project);
         Royalty::where('id', $id)->delete();
         RoyaltyController::recalculated($project);
         return redirect('/project/' . $project);

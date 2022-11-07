@@ -123,8 +123,8 @@
           </div>
         </div>
       </div> -->
-            <div class="row">
-                <div class="col-lg-6 col-md-12">
+            <!-- <div class="row"> -->
+            <!-- <div class="col-lg-6 col-md-12">
                     <div class="card">
                         <div class="card-header card-header-tabs card-header-primary">
                             <div class="nav-tabs-navigation">
@@ -394,43 +394,43 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="card">
-                        <div class="card-header card-header-success">
-                            <h4 class="card-title">Usuários</h4>
-                            <!-- <p class="card-category">New employees on 15th September, 2016</p> -->
-                        </div>
-                        <div class="card-body table-responsive">
-                            <table class="table table-hover">
-                                <thead class="text-warning">
-                                    <th>Nome</th>
-                                    <th>Email</th>
-                                    <th>Data de criação</th>
-                                </thead>
-                                <tbody>
-                                    @foreach($users as $value)
-                                    <tr style="cursor: pointer">
-                                        <td>
-                                            {{ $value['name'] }}
-                                        </td>
-                                        <td>
-                                            {{ $value['email'] }}
-                                        </td>
-                                        <td>
-                                            {{date_format($value['created_at'],"d/m/Y H:i:s") }}
-                                        </td>
+                </div> -->
+            <div class="col-lg-12 col-lg-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title">Usuários</h4>
+                        <!-- <p class="card-category">New employees on 15th September, 2016</p> -->
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>Nome</th>
+                                <th>Email</th>
+                                <th>Data de criação</th>
+                            </thead>
+                            <tbody>
+                                @foreach($users as $value)
+                                <tr style="cursor: pointer">
+                                    <td>
+                                        {{ $value['name'] }}
+                                    </td>
+                                    <td>
+                                        {{ $value['email'] }}
+                                    </td>
+                                    <td>
+                                        {{date_format($value['created_at'],"d/m/Y H:i:s") }}
+                                    </td>
 
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- </div> -->
     @endsection
 
     @push('js')
