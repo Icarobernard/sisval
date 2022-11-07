@@ -195,8 +195,7 @@ cada país onde a patente foi concedida)" type="number" name="concession" class=
                                                 id="inlineRadio2" value="medium"> Moderado
                                             <span class="circle">
                                                 <span class="check"></span>
-                                            </span>
-                                        </label>
+                                            </span> </label>
                                     </div>
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
@@ -224,6 +223,5 @@ cada país onde a patente foi concedida)" type="number" name="concession" class=
             </div>
         </div>
     </div>
-</div>
 </div>
 @endsection
