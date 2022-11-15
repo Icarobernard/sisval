@@ -1,18 +1,18 @@
 <div>
     <style>
-    .helper {
-        display: flex;
-        justify-content: baseline;
-        text-align: center;
-    }
+        .helper {
+            display: flex;
+            justify-content: baseline;
+            text-align: center;
+        }
 
-    .support {
-        padding: 0 18px;
-        background-color: white;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.2s ease-out;
-    }
+        .support {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
     </style>
     <div class="helper">
         <button class="collapsible btn btn-info" type="button">
@@ -157,24 +157,25 @@
                             </tr>
                         </tbody>
                     </table>
+                    <p> PARR, Russell. Royalty rates for licensing intellectual property. John Wiley & Sons, 2007.</p>
                 </div>
             </div>
         </div>
     </div>
     <script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
 
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        });
-    }
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
     </script>
 </div>
