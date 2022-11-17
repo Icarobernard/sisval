@@ -21,7 +21,8 @@
                                             <i class="material-icons">content_paste</i>
                                         </span>
                                     </div>
-                                    <input type="text" name="name" class="form-control" placeholder="{{ __('Nome do projeto...') }}" value="{{ old('name') }}" required>
+                                    <input type="text" name="name" class="form-control"
+                                        placeholder="{{ __('Nome do projeto...') }}" value="{{ old('name') }}" required>
                                 </div>
                                 @if ($errors->has('name'))
                                 <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
@@ -36,7 +37,9 @@
                                             <i class="material-icons">people</i>
                                         </span>
                                     </div>
-                                    <input type="text" name="responsible" class="form-control" placeholder="{{ __('Responsáveis do projeto...') }}" value="{{ old('responsible') }}" required>
+                                    <input type="text" name="responsible" class="form-control"
+                                        placeholder="{{ __('Responsáveis do projeto...') }}"
+                                        value="{{ old('responsible') }}" required>
                                 </div>
                             </div>
                             <div class="methods">
@@ -45,17 +48,18 @@
                                         <span class="input-group-text">
                                         </span>
                                     </div>
-                                    <div class="form-check form-check-radio form-check-inline">
+                                    <!-- <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="radio" name="method" id="inlineRadio1" value="Fluxo de caixa descontado"> Fluxo de caixa descontado (FCD)
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>
                                         </label>
-                                    </div>
+                                    </div> -->
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="method" id="inlineRadio2" value="Royalty Rates"> Royalty Rates
+                                            <input class="form-check-input" type="radio" name="method" id="inlineRadio2"
+                                                value="Royalty Rates"> Royalty Rates
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>
@@ -63,7 +67,8 @@
                                     </div>
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="radio" name="method" id="inlineRadio1" value="Pita"> Método Pita
+                                            <input class="form-check-input" type="radio" name="method" id="inlineRadio1"
+                                                value="Pita"> Método Pita
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>
@@ -74,7 +79,8 @@
                             <input type="number" name="calculated" class="form-control" value="0" hidden>
                         </div>
                         <div class="card-footer justify-content-center">
-                            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Criar projeto') }}</button>
+                            <button type="submit"
+                                class="btn btn-primary btn-link btn-lg">{{ __('Criar projeto') }}</button>
                         </div>
                     </div>
                 </form>
