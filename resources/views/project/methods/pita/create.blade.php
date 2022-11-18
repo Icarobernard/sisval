@@ -151,7 +151,7 @@ cada país onde a patente foi concedida)" type="number" name="concession" class=
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">
-                                            Escolha o critério do investimento em ativos de produção (Pinvestimento)
+                                            Escolha o critério na baixa necessidade de investimento em nova planta industrial
                                         </label>
                                     </div>
 
@@ -178,6 +178,9 @@ cada país onde a patente foi concedida)" type="number" name="concession" class=
                                             </span>
                                         </label>
                                     </div>
+                                    <label class="input-group-text">
+                                        ou investimento em equipamentos. (Pinvestimento)
+                                    </label>
                                 </div>
                             </div>
                             <input type="number" name="calculated" class="form-control" value="0" hidden>

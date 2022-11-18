@@ -179,7 +179,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">
-                                            Escolha o critério do investimento em ativos de produção (Pinvestimento)
+                                            Escolha o critério na baixa necessidade de investimento em nova planta industrial
                                         </label>
                                     </div>
 
@@ -207,6 +207,9 @@
                                             </span>
                                         </label>
                                     </div>
+                                    <label class="input-group-text">
+                                        ou investimento em equipamentos. (Pinvestimento)
+                                    </label>
                                 </div>
                             </div>
                             <input type="hidden" name="id" value="{{$method->id}}">
