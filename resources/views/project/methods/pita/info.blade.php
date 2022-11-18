@@ -56,7 +56,7 @@
     </div>
     <div class="helper">
         <button class="collapsible btn btn-success" type="button">
-            NPT detalhado
+            TRL detalhado
         </button>
         <div class="support">
             <div class="card card-body">
@@ -64,7 +64,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">NPT</th>
+                                <th scope="col">TRL</th>
                                 <th scope="col">Fase:</th>
                                 <th scope="col">Para produto</th>
                                 <th scope="col">Para processo</th>
@@ -141,19 +141,19 @@
         </div>
     </div>
     <script>
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
 
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        });
-    }
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
     </script>
 </div>
