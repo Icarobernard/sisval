@@ -34,6 +34,9 @@
                                     <th>
                                         Cálculo
                                     </th>
+                                    <th>
+                                        Data de criação
+                                    </th>
                                 </thead>
                                 <tbody>
                                     @foreach($data as $value)
@@ -52,6 +55,9 @@
                                         </td>
                                         <td>
                                             R$ {{round($value['calculated']) }}
+                                        </td>
+                                        <td>
+                                            {{date_format($value['created_at'],"d/m/Y H:i:s") }}
                                         </td>
                                     </tr>
                                     @endforeach
