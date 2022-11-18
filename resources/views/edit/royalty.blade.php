@@ -87,8 +87,8 @@
                             </tr>
                             <tr>
                                 <td> <input type="number" name="period" class="form-control" placeholder="" value="{{count($method)+1}}" required> </td>
-                                <td> <input type="number" name="sale" class="form-control" placeholder="{{ __('Informe o preço de venda..') }}" value="" required> </td>
-                                <td> <input type="number" name="unity" class="form-control" placeholder="{{ __('Informe a quantidade vendida.') }}" value="" required> </td>
+                                <td> <input type="number" name="sale" class="form-control" placeholder="{{ __('Informe o preço de venda.. (R$)') }}" value="" required> </td>
+                                <td> <input type="number" name="unity" class="form-control" placeholder="{{ __('Informe a quantidade vendida.. (Un.)') }}" value="" required> </td>
                             </tr>
                         </tbody>
                     </table>
