@@ -216,12 +216,12 @@
                             @endif
                         </div>
                         <div class="card-footer justify-content-center">
-                            <button type="submit" class="btn btn-primary btn-md">{{ __('Recalcular método') }}</button>
+                            <button type="submit" class="btn btn-primary btn-md">{{ __('Recalcular projeto') }}</button>
                 </form>
                 <form class="form" method="post" action="/project/{{$data['id']}}/delete">
                     @csrf
                     @method('post')
-                    <button type="submit" class="btn btn-danger btn-md">{{ __('Excluir método') }}</button>
+                    <button type="submit" class="btn btn-danger btn-md">{{ __('Excluir projeto') }}</button>
                 </form>
             </div>
         </div>

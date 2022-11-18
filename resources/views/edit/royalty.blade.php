@@ -14,8 +14,7 @@
                                 <i class="material-icons">content_paste</i>
                             </span>
                         </div>
-                        <input disabled type="text" name="name" class="form-control"
-                            placeholder="{{ __('Nome do projeto...') }}" value="{{ $data['name'] }}" required>
+                        <input disabled type="text" name="name" class="form-control" placeholder="{{ __('Nome do projeto...') }}" value="{{ $data['name'] }}" required>
                     </div>
                     @if ($errors->has('name'))
                     <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
@@ -30,9 +29,7 @@
                                 <i class="material-icons">people</i>
                             </span>
                         </div>
-                        <input disabled type="text" name="responsible" class="form-control"
-                            placeholder="{{ __('Responsáveis do projeto...') }}" value="{{ $data['responsible'] }}"
-                            required>
+                        <input disabled type="text" name="responsible" class="form-control" placeholder="{{ __('Responsáveis do projeto...') }}" value="{{ $data['responsible'] }}" required>
                     </div>
                 </div>
                 <div class="bmd-form-group mt-3">
@@ -42,15 +39,14 @@
                                 <i class="material-icons">content_paste</i>
                             </span>
                         </div>
-                        <input disabled type="text" name="method" class="form-control" value="{{ $data['method'] }}"
-                            required>
+                        <input disabled type="text" name="method" class="form-control" value="{{ $data['method'] }}" required>
                     </div>
                 </div>
                 <div class="bmd-form-group mt-3">
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
-                                Total Royalty
+                                Total Royalty (R$)
                             </span>
                         </div>
                         <!-- <input disabled type="text" name="method" class="form-control" value=""
@@ -65,9 +61,9 @@
                         <thead>
                             <tr>
                                 <th scope="col">Período</th>
-                                <th scope="col">Valor de venda</th>
-                                <th scope="col">Quantidade vendida</th>
-                                <th scope="col">Valor royalty</th>
+                                <th scope="col">Valor de venda (R$)</th>
+                                <th scope="col">Quantidade vendida (Un.)</th>
+                                <th scope="col">Royalties (R$)</th>
                                 <th scope="col">Operação</th>
 
                             </tr>
@@ -80,24 +76,19 @@
                                 <td> {{$value['unity']}}</td>
                                 <td> {{$value['royalty']}}</td>
                                 <td>
-                                    <form class="form" method="post"
-                                        action="/royalty/{{$value['id']}}/{{$value['project_id']}}/delete">
+                                    <form class="form" method="post" action="/royalty/{{$value['id']}}/{{$value['project_id']}}/delete">
                                         @csrf
                                         @method('post')
-                                        <button type="submit" class="btn btn-danger btn-sm"><i
-                                                class="fa fa-trash"></i></button>
+                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
                                     </form>
 
                                 </td>
                                 @endforeach
                             </tr>
                             <tr>
-                                <td> <input type="number" name="period" class="form-control" placeholder=""
-                                        value="{{count($method)+1}}" required> </td>
-                                <td> <input type="number" name="sale" class="form-control"
-                                        placeholder="{{ __('Informe o preço de venda..') }}" value="" required> </td>
-                                <td> <input type="number" name="unity" class="form-control"
-                                        placeholder="{{ __('Informe a quantidade vendida.') }}" value="" required> </td>
+                                <td> <input type="number" name="period" class="form-control" placeholder="" value="{{count($method)+1}}" required> </td>
+                                <td> <input type="number" name="sale" class="form-control" placeholder="{{ __('Informe o preço de venda..') }}" value="" required> </td>
+                                <td> <input type="number" name="unity" class="form-control" placeholder="{{ __('Informe a quantidade vendida.') }}" value="" required> </td>
                             </tr>
                         </tbody>
                     </table>
@@ -109,7 +100,7 @@
     <form class="form" method="post" action="/project/{{$data['id']}}/delete">
         @csrf
         @method('post')
-        <button type="submit" class="btn btn-danger btn-md">{{ __('Excluir método') }}</button>
+        <button type="submit" class="btn btn-danger btn-md">{{ __('Excluir projeto') }}</button>
     </form>
 </div>
 @include('project.methods.royalty.info')
