@@ -36,7 +36,7 @@ class ProjectController extends Controller
         ];
 
         if ($request->input('method') == 'Fluxo de caixa descontado') {
-            return view('project.methods.fcd', ['data' => $dataValues]);
+            return view('project.methods.fcd.fcd', ['data' => $dataValues]);
         } else if ($request->input('method') == 'Royalty Rates') {
             return view('project.methods.royalty.index', ['data' => $dataValues])->with('step', false);
         } else if ($request->input('method') == 'Pita') {
