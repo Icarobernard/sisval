@@ -15,7 +15,6 @@ class FcdController extends Controller
             $tma = 2;
         }
         $profit = $request->input('unity') * $request->input('sale');
-
         $idProject = 0;
 
         $fcdValues = [
@@ -60,13 +59,11 @@ class FcdController extends Controller
     }
     public function update(Request $request, $id)
     {
-        // $data = Project::find($id);
         $value = Fcd::where('project_id', $id)->orderBy('period')->first();
         $tma = $value->tma;
         $rate = $value->rate;
-        $profit = $request->input('unity') * $request->input('sale');
 
-        $royaltyValues = [
+        $fcdValues = [
             'tma' => $tma,
             'period' => $request->input('period'),
             'unity' => $request->input('unity'),
@@ -78,9 +75,7 @@ class FcdController extends Controller
             'project_id' => $id,
         ];
 
-
-        // $royaltyValues['period'] =  count(Royalty::where('project_id', $id)->get()) + 1;
-        Fcd::create($royaltyValues);
+        Fcd::create($fcdValues);
         FcdController::recalculated($id);
 
         return redirect('/project/' . $id);
@@ -91,7 +86,6 @@ class FcdController extends Controller
     }
     public function destroy(Request $request, $id, $project)
     {
-        // $data = Project::find($project);
         Fcd::where('id', $id)->delete();
         FcdController::recalculated($project);
         return redirect('/project/' . $project);

@@ -66,9 +66,10 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">Período</th>
+                                <th scope="col">Período (anual)</th>
                                 <th scope="col">Valor de venda (R$)</th>
                                 <th scope="col">Quantidade vendida (Un.)</th>
+                                <th scope="col">Taxa TMA (% ao ano.)</th>
                                 <th scope="col">Operação</th>
 
                             </tr>
@@ -79,6 +80,7 @@
                                 <td> {{$value['period']}}</td>
                                 <td> {{$value['sale']}}</td>
                                 <td> {{$value['unity']}}</td>
+                                <td> {{$value['tma']}}%</td>
                                 <td>
                                     <form class="form" method="post"
                                         action="/fcd/{{$value['id']}}/{{$value['project_id']}}/delete">
