@@ -6,6 +6,7 @@
                     @csrf
                     @method('post')
                     <div class="card card-login card-hidden mb-3">
+                        <a href={{route('project')}}><i title="Voltar" style="padding-left: 10px; padding-top: 10px" class="fa fa-arrow-left"></i> </a>
                         <div class="card-header text-center">
                             <h4 class="card-title"><strong>{{ __('Edição') }}</strong></h4>
                         </div>
@@ -51,7 +52,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                            <label class="form-check-label"> Custo de manutenção da patente</label>
+                                            <label class="form-check-label"> Custo de manutenção da patente (R$)</label>
                                         </span>
                                         <input type="number" name="maintenance" class="form-control" value="{{ $method->maintenance }}" required>
                                     </div>
@@ -61,7 +62,8 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                            <label class="form-check-label"> Plegal</label>
+                                            <label class="form-check-label"> Plegal (Acréscimo de +5 pontos para cada
+                                                país onde a patente estiver concedida)</label>
                                         </span>
                                         <input step="0.01" type="number" name="concession" class="form-control" value="{{ $method->concession }}" required>
                                     </div>
@@ -71,7 +73,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                            <label class="form-check-label"> Taxa</label>
+                                            <label class="form-check-label"> Taxa (%)</label>
                                         </span>
                                         <input step="0.01" type="number" name="tax" class="form-control" value="{{ $method->tax }}" required>
                                     </div>
@@ -81,7 +83,8 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                            <label class="form-check-label"> Tempo de utilização da tecnologia</label>
+                                            <label class="form-check-label"> Tempo de utilização da tecnologia (Periodo
+                                                anual)</label>
                                         </span>
                                         <input type="number" name="period" class="form-control" value="{{ $method->period }}" required>
                                     </div>
@@ -91,7 +94,7 @@
                                 <div class="input-group input-group-static mb-4">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                            <label class="form-check-label"> NPT</label>
+                                            <label class="form-check-label"> TRL</label>
                                         </span>
                                     </div>
                                     <select title="Nível de Prontidão Tecnológica da Patente (NPT)" name="npt" class="form-control" id="exampleFormControlSelect1">
@@ -179,7 +182,8 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">
-                                            Escolha o critério do investimento em ativos de produção (Pinvestimento)
+                                            Escolha o critério na baixa necessidade de investimento em nova planta
+                                            industrial
                                         </label>
                                     </div>
 
@@ -207,18 +211,21 @@
                                             </span>
                                         </label>
                                     </div>
+                                    <label class="input-group-text">
+                                        ou investimento em equipamentos. (Pinvestimento)
+                                    </label>
                                 </div>
                             </div>
                             <input type="hidden" name="id" value="{{$method->id}}">
                             @endif
                         </div>
                         <div class="card-footer justify-content-center">
-                            <button type="submit" class="btn btn-primary btn-md">{{ __('Recalcular método') }}</button>
+                            <button type="submit" class="btn btn-primary btn-md">{{ __('Recalcular projeto') }}</button>
                 </form>
                 <form class="form" method="post" action="/project/{{$data['id']}}/delete">
                     @csrf
                     @method('post')
-                    <button type="submit" class="btn btn-danger btn-md">{{ __('Excluir método') }}</button>
+                    <button type="submit" class="btn btn-danger btn-">{{ __('Excluir projeto') }}</button>
                 </form>
             </div>
         </div>

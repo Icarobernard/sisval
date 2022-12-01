@@ -80,7 +80,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('royalty/{id}/{project}/delete', ['as' => 'royalty.destroy', 'uses' => 'App\Http\Controllers\RoyaltyController@destroy']);
 	Route::post('royalty/{id}/edit', ['as' => 'royalty.update', 'uses' => 'App\Http\Controllers\RoyaltyController@update']);
 	Route::post('project/royalty', ['as' => 'royalty.create', 'uses' => 'App\Http\Controllers\RoyaltyController@create']);
-	Route::post('project/fcd', ['as' => 'project.fcd', 'uses' => 'App\Http\Controllers\ProjectController@createFcd']);
+	Route::post('fcd/{id}/{project}/delete', ['as' => 'fcd.destroy', 'uses' => 'App\Http\Controllers\FcdController@destroy']);
+	Route::post('fcd/{id}/edit', ['as' => 'fcd.update', 'uses' => 'App\Http\Controllers\FcdController@update']);
+	Route::post('project/fcd', ['as' => 'fcd.create', 'uses' => 'App\Http\Controllers\FcdController@create']);
 	Route::post('project/pita', ['as' => 'pita.create', 'uses' => 'App\Http\Controllers\PitaController@create']);
 	Route::post('pita/{id}/edit', ['as' => 'pita.update', 'uses' => 'App\Http\Controllers\PitaController@update']);
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);

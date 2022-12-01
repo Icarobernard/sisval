@@ -24,7 +24,7 @@
                                         </span>
                                     </div>
                                     <input title="Ctotal: Custo total de manutenção das patentes em todos os países (anuidades e 
-gastos com escritórios de patentes)" type="number" name="maintenance" class="form-control" placeholder="{{ __('Custo de manutenção da patente (Ctotal)...') }}" value="{{ old('maintenance') }}" required>
+gastos com escritórios de patentes)" type="number" name="maintenance" class="form-control" placeholder="{{ __('Custo de manutenção da patente - Ctotal... (R$)') }}" value="{{ old('maintenance') }}" required>
                                 </div>
                             </div>
                             <div class="bmd-form-group mb-3">
@@ -34,7 +34,7 @@ gastos com escritórios de patentes)" type="number" name="maintenance" class="fo
                                             <i class="fa fa-list-ol"></i>
                                         </span>
                                     </div>
-                                    <input title="d: A taxa de depreciação (reduzido em 5% a.a. a cada ano)" type="number" step="0.01" name="tax" class="form-control" placeholder="{{ __('Informe a taxa de depreciação da patente (d)...') }}" value="{{ old('maintenance') }}" required>
+                                    <input title="d: A taxa de depreciação (reduzido em 5% a.a. a cada ano)" type="number" step="0.01" name="tax" class="form-control" placeholder="{{ __('Informe a taxa de pocentagem de depreciação da patente - d... (%)') }}" value="{{ old('maintenance') }}" required>
                                 </div>
                             </div>
                             <div class="bmd-form-group">
@@ -45,7 +45,7 @@ gastos com escritórios de patentes)" type="number" name="maintenance" class="fo
                                         </span>
                                     </div>
                                     <input title=" Plegal: Prêmio adicional por concessão nos países (adicionado o valor de +5 para 
-cada país onde a patente foi concedida)" type="number" name="concession" class="form-control" placeholder="{{ __('Informe o valor PLegal da patente...') }}" value="{{ old('value') }}" required>
+cada país onde a patente foi concedida)" type="number" name="concession" class="form-control" placeholder="{{ __('Informe o valor PLegal da patente... (Acréscimo de +5 pontos para cada país onde a patente estiver concedida)') }}" value="{{ old('value') }}" required>
                                 </div>
                             </div>
                             <div class="bmd-form-group mt-3">
@@ -55,7 +55,7 @@ cada país onde a patente foi concedida)" type="number" name="concession" class=
                                             <i class="fa fa-calendar"></i>
                                         </span>
                                     </div>
-                                    <input title="t: Tempo de utilização da tecnologia" type="number" name="time" class="form-control" placeholder="{{ __('Tempo de utilização da tecnologia (t)...') }}" value="{{ old('time') }}" required>
+                                    <input title="t: Tempo de utilização da tecnologia" type="number" name="time" class="form-control" placeholder="{{ __('Tempo de utilização da tecnologia - t... (Periodo anual)') }}" value="{{ old('time') }}" required>
                                 </div>
                             </div>
                             <div class="bmd-form-group mt-3">
@@ -66,7 +66,7 @@ cada país onde a patente foi concedida)" type="number" name="concession" class=
                                         </span>
                                     </div>
                                     <select title="Nível de Prontidão Tecnológica da Patente (NPT)" name="npt" class="form-control" id="exampleFormControlSelect1">
-                                        <option>Selecione o nível NPT </option>
+                                        <option>Selecione o nível TRL </option>
                                         <option value="1">Nível 1</option>
                                         <option value="2">Nível 2</option>
                                         <option value="3">Nível 3</option>
@@ -151,7 +151,7 @@ cada país onde a patente foi concedida)" type="number" name="concession" class=
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <label class="input-group-text">
-                                            Escolha o critério do investimento em ativos de produção (Pinvestimento)
+                                            Escolha o critério na baixa necessidade de investimento em nova planta industrial
                                         </label>
                                     </div>
 
@@ -178,6 +178,9 @@ cada país onde a patente foi concedida)" type="number" name="concession" class=
                                             </span>
                                         </label>
                                     </div>
+                                    <label class="input-group-text">
+                                        ou investimento em equipamentos. (Pinvestimento)
+                                    </label>
                                 </div>
                             </div>
                             <input type="number" name="calculated" class="form-control" value="0" hidden>

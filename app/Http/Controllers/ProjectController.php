@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\Pita;
 use App\Models\Royalty;
+use App\Models\Fcd;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Http\Request;
@@ -36,9 +37,9 @@ class ProjectController extends Controller
         ];
 
         if ($request->input('method') == 'Fluxo de caixa descontado') {
-            return view('project.methods.fcd', ['data' => $dataValues]);
+            return view('project.methods.fcd.form', ['data' => $dataValues]);
         } else if ($request->input('method') == 'Royalty Rates') {
-            return view('project.methods.royalty.index', ['data' => $dataValues])->with('step', false);
+            return view('project.methods.royalty.form', ['data' => $dataValues]);
         } else if ($request->input('method') == 'Pita') {
             return view('project.methods.pita.create', ['data' => $dataValues]);
         } else {
@@ -55,6 +56,9 @@ class ProjectController extends Controller
         }
         if ($data['method'] == 'Royalty Rates') {
             $method = Royalty::where('project_id', $id)->orderBy('period')->get();
+        }
+        if ($data['method'] == 'Fluxo de caixa descontado') {
+            $method = Fcd::where('project_id', $id)->orderBy('period')->get();
         }
 
         return view('project.details', ['data' => $data])->with('method', $method);
@@ -188,6 +192,9 @@ class ProjectController extends Controller
         }
         if ($project['method'] == 'Royalty Rates') {
             Royalty::where('project_id', $id)->delete();
+        }
+        if ($project['method'] == 'Fluxo de caixa descontado') {
+            Fcd::where('project_id', $id)->delete();
         }
         $project->delete();
         return view('project.message.success');

@@ -25,9 +25,9 @@
                         <thead>
                             <tr>
                                 <th scope="col">Setor da Industria</th>
-                                <th scope="col">Taxa Mínima</th>
-                                <th scope="col">Taxa Máxima</th>
-                                <th scope="col">Mediana das Taxas</th>
+                                <th scope="col">Taxa Mínima (%)</th>
+                                <th scope="col">Taxa Máxima (%)</th>
+                                <th scope="col">Mediana das Taxas (%)</th>
                             </tr>
                         </thead>
                         <tbody>
