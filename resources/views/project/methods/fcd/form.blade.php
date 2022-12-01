@@ -1,9 +1,11 @@
+@extends('layouts.app', ['activePage' => 'project', 'titlePage' => __('Cadastrar projeto')])
+
 @section('content')
 <div class="content">
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-lg-12 col-md-6 col-sm-8 ml-auto mr-auto">
-                <form class="form" method="POST" action="{{ route('royalty.create') }}">
+                <form class="form" method="POST" action="{{ route('fcd.create') }}">
                     @csrf
                     @method('post')
 
@@ -11,7 +13,8 @@
                         <a href={{route('registerProject')}}><i title="Voltar"
                                 style="padding-left: 10px; padding-top: 10px" class="fa fa-arrow-left"></i> </a>
                         <div class="card-header text-center">
-                            <h4 class="card-title"><strong>{{ __('Cálculo método Royalty Rates') }}</strong></h4>
+                            <h4 class="card-title"><strong>{{ __('Cálculo método Fluxo de caixa descontado') }}</strong>
+                            </h4>
                         </div>
 
                         <div class="card-body ">
@@ -23,8 +26,8 @@
                                                 <i class="fa fa-number"></i>
                                             </span>
                                         </div>
-                                        <input type="number" step="0.01" name="tax" class="form-control"
-                                            placeholder="{{ __('Informe a taxa de porcentagem aplicada para o setor... (%)') }}"
+                                        <input type="number" step="0.01" name="tma" class="form-control"
+                                            placeholder="{{ __('Informe a taxa anual de juros (TMA)... (%)') }}"
                                             value="" required>
                                     </div>
                                 </div>
@@ -77,9 +80,11 @@
                         <input type="text" name="method" value="{{ $data['method'] }}" hidden>
                         <input name="name" value="{{ $data['name'] }}" hidden>
                         <input name="responsible" value="{{ $data['responsible'] }}" hidden>
+                        <input type="number" name="payback" value="0" hidden>
+                        <input type="number" name="tir" value="0" hidden>
                 </form>
             </div>
-            @include('project.methods.royalty.info')
+            @include('project.methods.fcd.info')
         </div>
     </div>
 </div>

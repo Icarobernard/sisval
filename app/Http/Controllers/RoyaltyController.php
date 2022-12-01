@@ -46,7 +46,6 @@ class RoyaltyController extends Controller
         $dataValues['calculated'] = $royalty;
         RoyaltyController::recalculated($idProject);
         return redirect('/project/' . $idProject);
-        // return view('project.methods.royalty.index', ['data' => $dataValues])->with('step', true);
     }
 
     public function recalculated($id)

@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fcd', function (Blueprint $table) {
+        Schema::create('fcds', function (Blueprint $table) {
             $table->id();
             $table->integer('period');
             $table->integer('unity');
