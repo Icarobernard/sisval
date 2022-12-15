@@ -39,13 +39,13 @@
                                     <input type="text" name="responsible" class="form-control" placeholder="{{ __('Responsáveis do projeto...') }}" value="{{ old('responsible') }}" required>
                                 </div>
                             </div>
-                            <div class="methods">
+                            <div class="methods mt-3">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                         </span>
                                     </div>
-                                    <div class="form-check form-check-radio form-check-inline">
+                                    <div class="form-check form-check-radio form-check-inline ">
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="radio" name="method" id="inlineRadio1" value="Fluxo de caixa descontado"> Fluxo de caixa descontado (FCD)
                                             <span class="circle">
@@ -64,6 +64,14 @@
                                     <div class="form-check form-check-radio form-check-inline">
                                         <label class="form-check-label">
                                             <input class="form-check-input" type="radio" name="method" id="inlineRadio1" value="Pita"> Método Pita
+                                            <span class="circle">
+                                                <span class="check"></span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-radio form-check-inline">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="radio" name="method" id="inlineRadio1" value="Sunk Cost"> Método Sunk Cost
                                             <span class="circle">
                                                 <span class="check"></span>
                                             </span>

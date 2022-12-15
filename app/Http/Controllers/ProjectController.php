@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\Pita;
 use App\Models\Royalty;
 use App\Models\Fcd;
+use App\Models\Sunk;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use Illuminate\Http\Request;
@@ -42,6 +43,8 @@ class ProjectController extends Controller
             return view('project.methods.royalty.form', ['data' => $dataValues]);
         } else if ($request->input('method') == 'Pita') {
             return view('project.methods.pita.create', ['data' => $dataValues]);
+        } else if ($request->input('method') == 'Sunk Cost') {
+            return view('project.methods.sunk.form', ['data' => $dataValues]);
         } else {
             return view('project.message.fail');
         }
@@ -59,6 +62,9 @@ class ProjectController extends Controller
         }
         if ($data['method'] == 'Fluxo de caixa descontado') {
             $method = Fcd::where('project_id', $id)->orderBy('period')->get();
+        }
+        if ($data['method'] == 'Sunk Cost') {
+            $method = Sunk::where('project_id', $id)->orderBy('period')->get();
         }
 
         return view('project.details', ['data' => $data])->with('method', $method);
@@ -195,6 +201,9 @@ class ProjectController extends Controller
         }
         if ($project['method'] == 'Fluxo de caixa descontado') {
             Fcd::where('project_id', $id)->delete();
+        }
+        if ($project['method'] == 'Sunk Cost') {
+            Sunk::where('project_id', $id)->delete();
         }
         $project->delete();
         return view('project.message.success');
