@@ -10,6 +10,7 @@
                     @method('post')
 
                     <div class="card card-login card-hidden mb-3">
+                        <a href={{route('project')}}><i title="Voltar" style="padding-left: 10px; padding-top: 10px" class="fa fa-arrow-left"></i> </a>
                         <div class="card-header text-center">
                             <!-- <h4 class="card-title"><strong>{{ __('Cadastro') }}</strong></h4> -->
                         </div>
