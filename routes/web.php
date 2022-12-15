@@ -80,6 +80,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('royalty/{id}/{project}/delete', ['as' => 'royalty.destroy', 'uses' => 'App\Http\Controllers\RoyaltyController@destroy']);
 	Route::post('royalty/{id}/edit', ['as' => 'royalty.update', 'uses' => 'App\Http\Controllers\RoyaltyController@update']);
 	Route::post('project/royalty', ['as' => 'royalty.create', 'uses' => 'App\Http\Controllers\RoyaltyController@create']);
+	Route::post('project/sunk', ['as' => 'sunk.create', 'uses' => 'App\Http\Controllers\SunkController@create']);
+	Route::post('sunk/{id}/{project}/delete', ['as' => 'sunk.destroy', 'uses' => 'App\Http\Controllers\SunkController@destroy']);
+	Route::post('sunk/{id}/edit', ['as' => 'sunk.update', 'uses' => 'App\Http\Controllers\SunkController@update']);
 	Route::post('fcd/{id}/{project}/delete', ['as' => 'fcd.destroy', 'uses' => 'App\Http\Controllers\FcdController@destroy']);
 	Route::post('fcd/{id}/edit', ['as' => 'fcd.update', 'uses' => 'App\Http\Controllers\FcdController@update']);
 	Route::post('project/fcd', ['as' => 'fcd.create', 'uses' => 'App\Http\Controllers\FcdController@create']);

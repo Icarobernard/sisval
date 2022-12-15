@@ -11,6 +11,8 @@
                 @include('edit.royalty')
                 @elseif($data['method']=='Fluxo de caixa descontado')
                 @include('edit.fcd')
+                @elseif($data['method']=='Sunk Cost')
+                @include('edit.sunk')
                 @endif
             </div>
         </div>
