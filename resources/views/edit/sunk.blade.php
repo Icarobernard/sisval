@@ -47,7 +47,7 @@
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
-                                Total Royalty (R$)
+                                Total anual (R$)
                             </span>
                         </div>
                         <!-- <input disabled type="text" name="method" class="form-control" value=""
