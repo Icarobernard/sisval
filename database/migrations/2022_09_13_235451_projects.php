@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('responsible');
             $table->string('calculated');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('admin');
             $table->string('method');
             $table->timestamps();
         });

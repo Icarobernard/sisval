@@ -14,9 +14,8 @@ class FcdController extends Controller
         if ($tma == 0 || $tma == null) {
             $tma = 2;
         }
-        $profit = $request->input('unity') * $request->input('sale');
-        $idProject = 0;
 
+        $idProject = Project::orderBy('created_at', 'desc')->pluck('id')->first();
         $fcdValues = [
             'period' => $request->input('period'),
             'unity' => $request->input('unity'),
@@ -27,17 +26,13 @@ class FcdController extends Controller
             'payback' => $request->input('payback'),
             'project_id' => $idProject,
         ];
-        $calculated = ($profit * $fcdValues['rate'] / 100) / (1 + $tma / 100);
-        $dataValues = [
-            'name' =>  $request->input('name'),
-            'responsible' =>  $request->input('responsible'),
-            'method' => $request->input('method'),
-            'calculated' =>  $calculated,
-        ];
 
-        Project::create($dataValues);
-        $idProject = Project::orderBy('created_at', 'desc')->pluck('id')->first();
-        $fcdValues['project_id'] = $idProject;
+        $profit = $request->input('unity') * $request->input('sale');
+        $calculated = ($profit * $fcdValues['rate'] / 100) / (1 + $tma / 100);
+
+        $data = Project::find($idProject);
+        $data->calculated = $calculated;
+        $data->save();
         Fcd::create($fcdValues);
 
         return redirect('/project/' . $idProject);
