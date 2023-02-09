@@ -11,28 +11,23 @@ class SunkController extends Controller
 {
     public function create(Request $request)
     {
-        $total = $request->input('quantity') * $request->input('unity') * $request->input('hours') * 12;
+        $total = $request->input('quantity') * $request->input('unity');
+        $idProject = Project::orderBy('created_at', 'desc')->pluck('id')->first();
+        $data = Project::find($idProject);
+
+
         $sunkValues = [
             'period' => $request->input('period'),
             'unity' => $request->input('unity'),
-            'hours' => $request->input('hours'),
             'quantity' => $request->input('quantity'),
             'description' => $request->input('description'),
             'total' => $total,
-            'project_id' => 0,
-        ];
-        $dataValues = [
-            'name' =>  $request->input('name'),
-            'responsible' =>  $request->input('responsible'),
-            'method' => $request->input('method'),
-            'calculated' => $total,
+            'project_id' => $idProject,
         ];
 
-
-        Project::create($dataValues);
-        $idProject = Project::orderBy('created_at', 'desc')->pluck('id')->first();
-        $sunkValues['project_id'] = $idProject;
         Sunk::create($sunkValues);
+        SunkController::recalculated($idProject);
+
         return redirect('/project/' . $idProject);
     }
 
@@ -41,21 +36,19 @@ class SunkController extends Controller
 
         $data = Project::find($id);
         $sunks = Sunk::where('project_id', $id)->orderBy('id')->get();
-
         $recalculated = 0;
         foreach ($sunks as $value) {
-            $recalculated = $recalculated + ($value['quantity'] * $value['unity'] * $value['hours'] * 12);
+            $recalculated = $recalculated + ($value['quantity'] * $value['unity']);
         }
         $data->calculated = $recalculated;
         $data->save();
     }
     public function update(Request $request, $id)
     {
-        $total = $request->input('quantity') * $request->input('unity') * $request->input('hours') * 12;
+        $total = $request->input('quantity') * $request->input('unity');
         $sunkValues = [
             'period' => $request->input('period'),
             'unity' => $request->input('unity'),
-            'hours' => $request->input('hours'),
             'quantity' => $request->input('quantity'),
             'description' => $request->input('description'),
             'total' => $total,

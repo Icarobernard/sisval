@@ -20,6 +20,9 @@ class RoyaltyController extends Controller
         $profit = $request->input('unity') * $request->input('sale');
         $royalty = $profit * ($request->input('rate') / 100) * $tax / 100;
         $idProject = 0;
+        $idProject = Project::orderBy('created_at', 'desc')->pluck('id')->first();
+        $data = Project::find($idProject);
+
 
         $royaltyValues = [
             'tax' => $tax,
@@ -31,19 +34,11 @@ class RoyaltyController extends Controller
             'rate' => $request->input('rate'),
             'project_id' => $idProject,
         ];
-        $dataValues = [
-            'name' =>  $request->input('name'),
-            'responsible' =>  $request->input('responsible'),
-            'method' => $request->input('method'),
-            'calculated' => $request->input('calculated'),
-        ];
 
-
-        Project::create($dataValues);
-        $idProject = Project::orderBy('created_at', 'desc')->pluck('id')->first();
-        $royaltyValues['project_id'] = $idProject;
         Royalty::create($royaltyValues);
-        $dataValues['calculated'] = $royalty;
+        //    $calculated = $royalty;
+        $data->admin = $request->input('admin');
+        $data->save();
         RoyaltyController::recalculated($idProject);
         return redirect('/project/' . $idProject);
     }

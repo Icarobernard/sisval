@@ -17,13 +17,8 @@ class PitaController extends Controller
      */
     public function create(Request $request)
     {
-        $dataValues = [
-            'name' =>  $request->input('name'),
-            'responsible' =>  $request->input('responsible'),
-            'method' => $request->input('method'),
-            'calculated' => $request->input('calculated'),
-        ];
-
+        $idProject = Project::orderBy('created_at', 'desc')->pluck('id')->first();
+        $data = Project::find($idProject);
         $npt = [
             '1' => ['low' => 1, 'medium' => 4, 'high' => 7],
             '2' => ['low' => 2, 'medium' => 5, 'high' => 8],
@@ -48,10 +43,11 @@ class PitaController extends Controller
         $period = $request->input('time');
         $tax = $request->input('tax') / 100;
 
-        $dataValues['calculated'] = ($maintenance * ($contribution + $volume + $investment + $concession) * (1 - $period * $tax));
+        $caculated = ($maintenance * ($contribution + $volume + $investment + $concession) * (1 - $period * $tax));
+        $data->calculated = $caculated;
+        $data->save();
 
-        Project::create($dataValues);
-        $idProject = Project::orderBy('created_at', 'desc')->pluck('id')->first();
+
         Pita::create(['concession' => $concession, 'pvolume' => $request->input('volume'), 'pinvestimento' => $request->input('investment'), 'pmargem' => $request->input('contribution'), 'project_id' => $idProject, 'npt' => $request->input('npt'), 'investment' =>  $investment, 'maintenance' => $maintenance, 'volume' => $volume, 'contribution' => $contribution, 'period' => $period, 'tax' => $request->input('tax')]);
 
         return view('project.message.success');
@@ -94,6 +90,7 @@ class PitaController extends Controller
 
             Pita::where('id', $request->input('id'))->update(['concession' => $concession, 'pvolume' => $request->input('volume'), 'pinvestimento' => $request->input('investment'), 'pmargem' => $request->input('contribution'),  'npt' => $request->input('npt'), 'investment' =>  $investment, 'maintenance' => $maintenance, 'volume' => $volume, 'contribution' => $contribution, 'period' => $period, 'tax' => $request->input('tax')]);
             $data->calculated = ($maintenance * ($contribution + $volume + $investment + $concession) * (1 - $period * $tax));
+            $data->admin =  $request->input('admin');
             $data->save();
             return view('project.message.success');
         }

@@ -13,7 +13,6 @@
                         <div class="card-header text-center">
                             <h4 class="card-title"><strong>{{ __('Cálculo método Sunk Cost') }}</strong></h4>
                         </div>
-
                         <div class="card-body ">
                             <div class="bmd-form-group">
                                 <div class="bmd-form-group">
@@ -56,28 +55,14 @@
                                             <!-- <i class="fa fa-list-ol"></i> -->
                                         </span>
                                     </div>
-                                    <input type="number"" name=" unity" class="form-control" placeholder="{{ __('Informe o valor por horas trabalhadas.. (R$/h)') }}" value="" required>
+                                    <input type="number"" name=" unity" class="form-control" placeholder="{{ __('Informe o valor do gasto.. (R$)') }}" value="" required>
                                 </div>
                             </div>
-                            <div class="bmd-form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <!-- <i class="fa fa-list-ol"></i> -->
-                                        </span>
-                                    </div>
-                                    <input type="number" step="0.01" name="hours" class="form-control" placeholder="{{ __('Informe a quantidade de horas mensais... (h/mês)') }}" value="" required>
-                                </div>
-                            </div>
-
                             <div class="card-footer justify-content-center">
                                 <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Calcular') }}</button>
                             </div>
                         </div>
                         <input type="number" name="calculated" class="form-control" value="0" hidden>
-                        <input type="text" name="method" value="{{ $data['method'] }}" hidden>
-                        <input name="name" value="{{ $data['name'] }}" hidden>
-                        <input name="responsible" value="{{ $data['responsible'] }}" hidden>
                 </form>
             </div>
         </div>

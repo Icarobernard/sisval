@@ -1,5 +1,4 @@
 @extends('layouts.app', ['activePage' => 'project', 'titlePage' => __('Cadastrar projeto')])
-
 @section('content')
 <div class="content">
     <div class="container-fluid">
@@ -8,7 +7,6 @@
                 <form class="form" method="POST" action="{{ route('pita.create') }}">
                     @csrf
                     @method('post')
-
                     <div class="card card-login card-hidden mb-3">
                         <a href={{route('registerProject')}}><i title="Voltar" style="padding-left: 10px; padding-top: 10px" class="fa fa-arrow-left"></i> </a>
                         <div class="card-header text-center">
@@ -73,9 +71,6 @@ cada país onde a patente foi concedida)" type="number" name="concession" class=
                                         <option value="4">Nível 4</option>
                                         <option value="5">Nível 5</option>
                                         <option value="6">Nível 6</option>
-                                        <!-- <option value="7">Nível 7</option>
-                                        <option value="8">Nível 8</option>
-                                        <option value="9">Nível 9</option> -->
                                     </select>
                                 </div>
                             </div>
@@ -183,10 +178,6 @@ cada país onde a patente foi concedida)" type="number" name="concession" class=
                                     </label>
                                 </div>
                             </div>
-                            <input type="number" name="calculated" class="form-control" value="0" hidden>
-                            <input type="text" name="method" value="{{ $data['method'] }}" hidden>
-                            <input name="name" value="{{ $data['name'] }}" hidden>
-                            <input name="responsible" value="{{ $data['responsible'] }}" hidden>
                         </div>
                         <div class="card-footer justify-content-center">
                             <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Criar projeto') }}</button>

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->integer('period');
             $table->double('unity');
-            $table->double('hours');
             $table->double('quantity');
             $table->string('description');
             $table->double('total');
