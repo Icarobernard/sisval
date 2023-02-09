@@ -11,7 +11,7 @@ class Sunk extends Model
     protected $fillable = [
         'period',
         'unity',
-        'hours',
+        // 'hours',
         'quantity',
         'description',
         'total',

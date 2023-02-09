@@ -48,6 +48,18 @@
                                 </div>
                             </div>
                             @if ($data['method']=='Pita')
+                            <div class="bmd-form-group mt-3">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            Valor do projeto (R$)
+                                        </span>
+                                    </div>
+                                    <!-- <input disabled type="text" name="method" class="form-control" value=""
+                            required> -->
+                                    <h2>{{number_format($data['calculated'] , 2, ',', '.') }} </h2>
+                                </div>
+                            </div>
                             <div class="criterion">
                                 <div class="input-group">
                                     <div class="input-group-prepend">

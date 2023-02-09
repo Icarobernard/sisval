@@ -47,12 +47,12 @@
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
-                                Total Royalty (R$)
+                                Valor do projeto (R$)
                             </span>
                         </div>
                         <!-- <input disabled type="text" name="method" class="form-control" value=""
                             required> -->
-                        <h2>{{ $data['calculated'] }} </h2>
+                        <h2>{{number_format($data['calculated'] , 2, ',', '.') }} </h2>
                     </div>
                 </div>
             </div>

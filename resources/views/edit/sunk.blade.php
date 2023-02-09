@@ -47,12 +47,12 @@
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">
-                                Total anual (R$)
+                                Valor do projeto (R$)
                             </span>
                         </div>
                         <!-- <input disabled type="text" name="method" class="form-control" value=""
                             required> -->
-                        <h2>{{ $data['calculated'] }} </h2>
+                        <h2>{{number_format($data['calculated'] , 2, ',', '.') }} </h2>
                     </div>
                 </div>
             </div>
@@ -63,9 +63,9 @@
                             <tr>
                                 <th scope="col">Ano/Período</th>
                                 <th scope="col">Descrição do gasto</th>
-                                <th scope="col">Quantidade (Un.)</th>
-                                <th scope="col">Valor unitário (R$/h)</th>
-                                <th scope="col">Quantidade de horas mensais (Un./mês)</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Valor unitário (R$)</th>
+                                <!-- <th scope="col">Quantidade de horas mensais (Un./mês)</th> -->
                                 <th scope="col">Custo anual (R$)</th>
                             </tr>
                         </thead>
@@ -76,7 +76,7 @@
                                 <td> {{$value['description']}}</td>
                                 <td> {{$value['quantity']}}</td>
                                 <td> {{$value['unity']}}</td>
-                                <td> {{$value['hours']}}</td>
+                                <!-- <td> {{$value['hours']}}</td> -->
                                 <td> {{$value['total']}}</td>
                                 <td>
                                     <form class="form" method="post" action="/sunk/{{$value['id']}}/{{$value['project_id']}}/delete">
@@ -93,7 +93,7 @@
                                 <td> <input type="text" name="description" class="form-control" placeholder="{{ __('Informe a descrição.. ') }}" value="" required></td>
                                 <td> <input type="number" name="quantity" class="form-control" placeholder="{{ __('Informe a quantidade') }}" value="" required></td>
                                 <td> <input type="number" name="unity" class="form-control" placeholder="{{ __('Informe o valor unitário') }}" value="" required></td>
-                                <td> <input type="number" name="hours" class="form-control" placeholder="{{ __('Informe a qtd. de hora mensal') }}" value="" required></td>
+                                <!-- <td> <input type="number" name="hours" class="form-control" placeholder="{{ __('Informe a qtd. de hora mensal') }}" value="" required></td> -->
                             </tr>
                         </tbody>
                     </table>

@@ -46,7 +46,7 @@
                                             <!-- <i class="fa fa-list-ol"></i> -->
                                         </span>
                                     </div>
-                                    <input type="number" name="quantity" class="form-control" placeholder="{{ __('Informe a quantidade (Un.)') }}" value="" required>
+                                    <input type="number" name="quantity" class="form-control" placeholder="{{ __('Informe a quantidade...') }}" value="" required>
                                 </div>
                             </div>
                             <div class="bmd-form-group">
@@ -56,19 +56,19 @@
                                             <!-- <i class="fa fa-list-ol"></i> -->
                                         </span>
                                     </div>
-                                    <input type="number"" name=" unity" class="form-control" placeholder="{{ __('Informe o valor por horas trabalhadas.. (R$/h)') }}" value="" required>
+                                    <input type="number"" name=" unity" class="form-control" placeholder="{{ __('Informe o valor unitário... (R$)') }}" value="" required>
                                 </div>
                             </div>
-                            <div class="bmd-form-group">
+                            <!-- <div class="bmd-form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                            <!-- <i class="fa fa-list-ol"></i> -->
+                                            <i class="fa fa-list-ol"></i>
                                         </span>
                                     </div>
                                     <input type="number" step="0.01" name="hours" class="form-control" placeholder="{{ __('Informe a quantidade de horas mensais... (h/mês)') }}" value="" required>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="card-footer justify-content-center">
                                 <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Calcular') }}</button>

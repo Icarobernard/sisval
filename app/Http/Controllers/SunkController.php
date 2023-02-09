@@ -11,11 +11,11 @@ class SunkController extends Controller
 {
     public function create(Request $request)
     {
-        $total = $request->input('quantity') * $request->input('unity') * $request->input('hours') * 12;
+        $total = $request->input('quantity') * $request->input('unity') * 12;
         $sunkValues = [
             'period' => $request->input('period'),
             'unity' => $request->input('unity'),
-            'hours' => $request->input('hours'),
+            // 'hours' => $request->input('hours'),
             'quantity' => $request->input('quantity'),
             'description' => $request->input('description'),
             'total' => $total,
@@ -44,18 +44,18 @@ class SunkController extends Controller
 
         $recalculated = 0;
         foreach ($sunks as $value) {
-            $recalculated = $recalculated + ($value['quantity'] * $value['unity'] * $value['hours'] * 12);
+            $recalculated = $recalculated + ($value['quantity'] * $value['unity'] * 12);
         }
         $data->calculated = $recalculated;
         $data->save();
     }
     public function update(Request $request, $id)
     {
-        $total = $request->input('quantity') * $request->input('unity') * $request->input('hours') * 12;
+        $total = $request->input('quantity') * $request->input('unity') * 12;
         $sunkValues = [
             'period' => $request->input('period'),
             'unity' => $request->input('unity'),
-            'hours' => $request->input('hours'),
+            // 'hours' => $request->input('hours'),
             'quantity' => $request->input('quantity'),
             'description' => $request->input('description'),
             'total' => $total,
