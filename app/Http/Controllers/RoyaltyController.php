@@ -26,6 +26,7 @@ class RoyaltyController extends Controller
 
         $royaltyValues = [
             'tax' => $tax,
+            'admin' => $request->input('admin'),
             'period' => $request->input('period'),
             'unity' => $request->input('unity'),
             'sale' => $request->input('sale'),
@@ -37,8 +38,8 @@ class RoyaltyController extends Controller
 
         Royalty::create($royaltyValues);
         //    $calculated = $royalty;
-        $data->admin = $request->input('admin');
-        $data->save();
+        // $data->admin = $request->input('admin');
+        // $data->save();
         RoyaltyController::recalculated($idProject);
         return redirect('/project/' . $idProject);
     }
